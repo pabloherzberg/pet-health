@@ -1,0 +1,35 @@
+$(document).ready(
+    function(){
+        $('#cadastrar').click(function(){
+                $('#tela_selecionar').removeClass('hide');
+                $('#tela_selecionar').addClass('show');
+            }
+        );
+        $('#btn_veterinario').click(function(){
+                $('#tela_selecionar').removeClass('show');
+                $('#tela_selecionar').addClass('hide');
+                $('input').removeClass('hide');
+                $('input').addClass('show');
+                $('#cadastrar').hide();
+                $('#acessar').hide();
+                $('#enviar').before("<input type='text' id='crmv' name='crmv' placeholder='crmv'>");
+            }         
+        );
+        $('#btn_dono_pet').click(function(){
+                $('#tela_selecionar').removeClass('show');
+                $('#tela_selecionar').addClass('hide');
+                $('input').removeClass('hide');
+                $('input').addClass('show');
+                $('#crmv').addClass('hide');
+                $('#cadastrar').hide();
+                $('#acessar').hide();
+            }         
+        );
+        $('#tela_selecionar').click(
+            function(){
+                $('#tela_selecionar').removeClass('show');
+                $('#tela_selecionar').addClass('hide');
+            }
+        );
+    }
+);
