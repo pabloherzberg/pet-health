@@ -10,5 +10,12 @@
         return pg_query($conexao,$query);
         /*Se o array possuir 6 posições é pq inclui o CRMV, logo o usuário é um VETERINÁRIO*/
     }
+
+    function buscarUsuario($conexao, $email, $senha){
+        $query = "select * from usuario where email ='$email' and senha = '$senha'";
+        $dado_tabular = pg_query($conexao, $query);
+        $array_dados = pg_fetch_array($dado_tabular);
+        return $array_dados;
+    }
     
 ?>
