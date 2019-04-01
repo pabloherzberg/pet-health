@@ -25,6 +25,7 @@
     if(isset($_POST['acessar'])){
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+        session_start();
         $_SESSION = buscarUsuario($conexao,$email,$senha);
         if($_SESSION){
             header('location:../home.php');

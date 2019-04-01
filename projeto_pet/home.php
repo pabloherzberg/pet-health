@@ -11,6 +11,6 @@
 </head>
 <body>
     <h1>bem vindo</h1>
-    <p><?php $_SESSION['nomes'] ?></p>
+    <p><?php echo($_SESSION['nome']) ?></p>
 </body>
 </html>
