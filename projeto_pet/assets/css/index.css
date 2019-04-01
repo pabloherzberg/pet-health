@@ -1,6 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
 *{
     margin:0px;
     padding:0px;
+}
+
+.corpo{
+    font-family: 'Arimo', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas: 'header'
+                        'corpo'
+                        'footer';
+}
+
+.header{
+    grid-area: header;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'esquerda . direita';
+}
+
+#logo{
+    grid-area: esquerda;
+    height: 150px;
+    padding: 5px;
+}
+.form{
+    grid-area: corpo;
+}
+
+.footer{
+    grid-area: footer;
+    background-color: #079682;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-areas: 'email instagram facebook twitter';
+}
+
+.footer figure{
+    margin-left: 50%;
+    transform: translatex(-50%);
+}
+
+.rodape{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.email{
+    grid-area: email;
+}
+.instagram{
+    grid-area: instagram;
+}
+.facebook{
+    grid-area: facebook;
+}
+.twitter{
+    grid-area: twitter;
 }
 #tela_selecionar{
     position: absolute;
@@ -37,4 +97,8 @@ label{
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+@media screen and (min-width: 481px) { 
+    
 }

@@ -15,9 +15,13 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <title>Document</title>
 </head>
-<body>
-    <header>aqui vai o logo e menu</header>
-    <section>
+<body class="corpo">
+    <header class="header">
+        <figure>
+            <img id="logo" src="assets/img/logo.png" alt="logo da empresa">
+        </figure>
+    </header>
+    <section class="form">
         <form action="includes/query.php" method="post">
             <div id="tela_selecionar" class="hide" >
                     <div class="btn" value='dono' id="btn_dono_pet">
@@ -39,6 +43,19 @@
             </div>
         </form>
     </section>
-    <footer></footer>
+    <footer class="footer">
+        <figure>
+            <img class="email rodape" src="assets/img/email.png" alt="ícone de email">
+        </figure>
+        <figure>
+            <img class="instagram rodape" src="assets/img/instagram.png" alt="ícone de instagram">
+        </figure>
+         <figure>
+            <img class="facebook rodape" src="assets/img/facebook.png" alt="ícone do facebook">
+         </figure>
+         <figure>
+         <img class="twitter rodape" src="assets/img/twitter.png" alt="ícone de twitter">
+         </figure>   
+    </footer>
 </body>
 </html>
