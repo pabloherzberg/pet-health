@@ -31,5 +31,10 @@ $(document).ready(
                 $('#tela_selecionar').addClass('hide');
             }
         );
+        $('#addPet').click(
+            function(){
+                $('#addPet').before("<form action='includes/query.php' method='post'><input type='text' name='nome'><input type='date' name='dt_nascimento'><input type='submit' name='inserirPet' value='Inserir pet'></form>");
+            }
+        );
     }
 );

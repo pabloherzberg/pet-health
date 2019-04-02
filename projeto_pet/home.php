@@ -1,16 +1,11 @@
 <?php
- include_once('includes/start.php');
+ include_once('includes/cabecalho.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
     <h1>bem vindo</h1>
-    <p><?php echo($_SESSION['nome']) ?></p>
+    <p><?php echo($_SESSION['nome'].' '.$_SESSION['email']) ?></p>
+    <a href="addPet.php">add pet</a>
 </body>
 </html>
