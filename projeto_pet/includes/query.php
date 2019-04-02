@@ -34,4 +34,14 @@
             header('location:../index');
         }
     }
+/*condição para quando o botão INSERIR PET for pressionado*/
+    if(isset($_POST['inserirPet'])){
+        $nomePet = $_POST['nome'];
+        $dt_nascimento = $_POST['dt_nascimento'];
+        echo($dt_nascimento);
+        session_start();
+        inserirPet($conexao, $nomePet, $dt_nascimento, $_SESSION['email']);
+        header('location:../home.php');
+    }
+
 ?>

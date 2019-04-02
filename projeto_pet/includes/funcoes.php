@@ -18,4 +18,8 @@
         return $array_dados;
     }
     
+    function inserirPet($conexao, $nome_pet, $dt_nascimento, $email_dono){
+        $query = "insert into pet (nome_pet, dt_nascimento, email_dono) values ('$nome_pet', '$dt_nascimento', '$email_dono')";
+        return pg_query($conexao, $query);
+    }
 ?>
