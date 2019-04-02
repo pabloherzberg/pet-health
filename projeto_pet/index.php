@@ -1,5 +1,5 @@
 <?
- include_once('includes/start.php');
+ include_once('includes/cabecalho.php');
  if($_SESSION){
      header('location:home.php');
  }
@@ -24,14 +24,14 @@
                     </div>
                 </div>
             <div id="campos_preencher">
-                <input type="text" class='hide' name="nome" placeholder="nome">
-                <input type="text" name="email" placeholder="emaill">
-                <input type="text" name="senha" placeholder="senha">
-                <input type="text" class='hide' name="endereco" placeholder="endereço">
-                <input type="text" class='hide' name="telefone" placeholder="telefone">
-                <input type="submit" id='acessar' name='acessar' value="Acessar">
-                <input type="button" id="cadastrar" value="Cadastrar">
-                <input type="submit" id='enviar' class="hide" name='enviar' value="Enviar">
+                <input type="text" class='hide campo' name="nome" placeholder="nome">
+                <input class="campo" type="text" name="email" placeholder="emaill">
+                <input class="campo" type="text" name="senha" placeholder="senha">
+                <input type="text" class='hide campo' name="endereco" placeholder="endereço">
+                <input type="text" class='hide campo' name="telefone" placeholder="telefone">
+                <input class="botao_login" type="submit" id='acessar' name='acessar' value="login">
+                <input class="botao_cadastrar" type="button" id="cadastrar" value="Cadastrar">
+                <input type="submit" id='enviar' class="hide botao_enviar" name='enviar' value="Enviar">
             </div>
         </form>
     </section>

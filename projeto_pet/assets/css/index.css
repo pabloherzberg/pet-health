@@ -6,6 +6,8 @@
 }
 
 .corpo{
+    height: 100vh;
+    width: 100vw;
     font-family: 'Arimo', sans-serif;
     display: grid;
     grid-template-columns: 1fr;
@@ -16,6 +18,10 @@
 }
 
 .header{
+    position: fixed;
+    top: 0px;
+    width: 100%; 
+    height: 15%;
     grid-area: header;
     display: grid;
     grid-template-rows: 1fr;
@@ -24,14 +30,61 @@
 
 #logo{
     grid-area: esquerda;
-    height: 150px;
+    height: 550px;
     padding: 5px;
 }
 .form{
-    grid-area: corpo;
+    position: fixed;
+    grid-area: corpo; 
+    width: 50%;
+    margin: 600px auto;
+    background-color: aquamarine;
+}
+
+#campos_preencher{
+    margin: 2px;
+    padding: 2px;
+    width: 50%;
+    background-color: lightyellow;
+}
+
+.campo{
+    width: 50%;
+    background-color: lightpink;
+    font-family: 'Arimo', sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+    border: 2pt solid;
+    border-top:none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #079682;
+}
+
+.botao_login {
+    width: 50%;
+    margin-bottom: 10px;
+    font-family: 'Arimo', sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.botao_cadastrar{
+    width: 50%;
+    margin-bottom: 10px;
+    font-family: 'Arimo', sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
 }
 
 .footer{
+    width: 100%; 
+    height: 10%;
+    position: fixed;
+    bottom: 0px;
     grid-area: footer;
     background-color: #079682;
     display: grid;
