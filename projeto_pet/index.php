@@ -1,4 +1,4 @@
-<?
+<?php
  include_once('includes/cabecalho.php');
  if($_SESSION){
      header('location:home.php');
