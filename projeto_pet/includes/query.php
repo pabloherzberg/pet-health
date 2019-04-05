@@ -19,7 +19,7 @@
             $array = array($nome, $email, $senha, $endereco, $telefone);
         }
         inserirUsuario($conexao, $array);
-        header('location:../index.html');
+        header('location:../index.php');
     }
 /*condição para quando o botão ACESSAR do CADASTRO USUARIO for pressionado */
     if(isset($_POST['acessar'])){
@@ -31,7 +31,7 @@
             header('location:../home.php');
         }
         else{
-            header('location:../index');
+            header('location:../index.php');
         }
     }
 /*condição para quando o botão INSERIR PET for pressionado*/

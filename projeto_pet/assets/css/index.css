@@ -8,28 +8,29 @@ body{
     width: 100vw;;
 }
 header{
-    padding-top:1em;
+    padding-top:1.7em;
 }
 header figure{
     background-color: #00dbbd;
-    width: 30vh;
-    height: 30vh;
+    width: 25vh;
+    height: 25vh;
     border-radius: 50%;
     margin-left:50%;
     transform: translateX(-50%);
 }
 header figure img{   
     position: relative;
-    max-height: 30vh;
+    max-height: 25vh;
 }
 main{
-    padding-top: 1em;
+    padding-top: 6em;
     width:100vw;
     height: 80vh;
 }
 form input{
     display: block;
-    width: 100%;
+    margin-left: 85px;
+    width: 50%;
     height: 4em;
     border: none;
     border-bottom: solid 0.1em #00dbbd;
@@ -51,6 +52,9 @@ input::placeholder{
     border: solid 0.1em #00dbbd;
 }
 
+.cadastro{
+    background-color: #00dbbd;
+}
 #tela_selecionar{
     position: absolute;
     display: block;
@@ -81,4 +85,16 @@ input::placeholder{
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+footer{
+    background-color: #079682;
+    height: 12vh;
+}
+
+footer p{
+    font-family: 'Arimo', sans-serif;
+    text-align: left;
+    color: #ffffff;
+    padding: 5pt;
 }
