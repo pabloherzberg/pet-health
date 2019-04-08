@@ -22,4 +22,8 @@
         $query = "insert into pet (nome_pet, dt_nascimento, email_dono) values ('$nome_pet', '$dt_nascimento', '$email_dono')";
         return pg_query($conexao, $query);
     }
+
+     // ------ FUNÇÕES PARA MEDICAMENTOS ------
+
+     
 ?>

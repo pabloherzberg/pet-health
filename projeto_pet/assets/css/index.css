@@ -5,7 +5,8 @@
     box-sizing: border-box;
 }
 body{
-    width: 100vw;;
+    width: 100vw;
+    font-family: 'Arimo', sans-serif;
 }
 header{
     padding-top:1.7em;
@@ -27,9 +28,29 @@ main{
     width:100vw;
     height: 80vh;
 }
+
+h1{
+    margin-top: 2em;
+    font-size: 20pt;
+    text-align: center;
+    padding: 2pt;
+}
+
+p{
+    font-size: 15pt;
+    text-align: center;
+    padding: 2pt;
+    margin-bottom: 2em;
+}
+
+nav{
+    display: inline-block;
+    align-content: center;
+}
+
 form input{
     display: block;
-    margin-left: 85px;
+    margin: 0 auto;
     width: 50%;
     height: 4em;
     border: none;
@@ -93,7 +114,6 @@ footer{
 }
 
 footer p{
-    font-family: 'Arimo', sans-serif;
     text-align: left;
     color: #ffffff;
     padding: 5pt;

@@ -44,4 +44,13 @@
         header('location:../home.php');
     }
 
+/*condição para quando o botão INSERIR MEDICAMENTO for pressionado*/
+/*if(isset($_POST['inserirMedicamento'])){
+    $nomeMedicamento = $_POST['nome'];
+    $dt_validade= $_POST['validade'];
+    inserirMedcamento($conexao, $nomeMedicamento, $dt_validade']);
+    header('location:../historico.php');//criar a página historico
+}*/
+
+    
 ?>

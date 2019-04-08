@@ -1,11 +1,11 @@
 <?php
  include_once('includes/cabecalho.php');
- /*if($_SESSION){
+ if($_SESSION){
      header('location:home.php');
- }*/
+ }
 ?>
     <link rel="stylesheet" href="assets/css/index.css">
-    <title>Document</title>
+    <title>Pet&Health</title>
 </head>
 <body>
     <header>
@@ -25,7 +25,7 @@
                 </div>
             <div id="campos_preencher">
                 <input type="text" class='hide' name="nome" placeholder="nome">
-                <input type="text" name="email" placeholder="emaill">
+                <input type="text" name="email" placeholder="email">
                 <input type="text" name="senha" placeholder="senha">
                 <input type="text" class='hide' name="endereco" placeholder="endereço">
                 <input type="text" class='hide' name="telefone" placeholder="telefone">
