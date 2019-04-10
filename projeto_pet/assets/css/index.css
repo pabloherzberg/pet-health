@@ -46,6 +46,7 @@ p{
 nav{
     display: inline-block;
     align-content: center;
+    background-color: aquamarine;
 }
 
 form input{
@@ -111,6 +112,7 @@ input::placeholder{
 footer{
     background-color: #079682;
     height: 12vh;
+    width: 100vw;
 }
 
 footer p{
