@@ -1,20 +1,16 @@
-<?php
- include_once('includes/cabecalho.php');
+<?php require('includes/cabecalho.php');
  if($_SESSION){
      header('location:home.php');
  }
 ?>
-    <link rel="stylesheet" href="assets/css/index.css">
-    <title>Pet&Health</title>
+<link rel="stylesheet" href="assets/css/index.css">
+
+<title>Pet&Health</title>
 </head>
 <body>
-    <header>
-        <figure>
-            <img id="logo" src="assets/img/logo.png" alt="logo da empresa">
-        </figure>
-    </header>
-    <main>
-        <form action="includes/query.php" method="post">
+<?php require('includes/header.php') ?>
+<main>
+        <form action="includes/logica.php" method="post">
             <div id="tela_selecionar" class="hide" >
                     <div class="btn" value='dono' id="btn_dono_pet">
                         <label for="btn_dono_pet">Dono Pet</label>
@@ -34,9 +30,7 @@
                 <input type="submit"class="hide btn" id='enviar' name='enviar' value="Enviar">
             </div>
         </form>
-    </main>
-    <footer>   
-        <p>Patrocinadores:</p>
-    </footer>
+</main>
+<?php require('includes/footer.php');?>
 </body>
 </html>
