@@ -36,7 +36,9 @@
     }
 #DESLOGAR USUARIO
     if(isset($_POST['deslogar'])){
-        session_destroy();
+        session_start();            //iniciar a sessão
+        session_destroy();          //destruir a sessão
+        session_unset();            //limpar as variáveis globais da sessão
         header('Location:../index.php');
     }
 #INSERIR PET
