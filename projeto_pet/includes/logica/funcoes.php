@@ -16,6 +16,11 @@
         $array_dados = pg_fetch_array($dado_tabular);
         return $array_dados;
     }
+
+    function alterarUsuario($conexao, $usuario){
+        $query = "update usuario set nome = '{$usuario['nome']}', endereco = '{$usuario['endereco']}', telefone = '{$usuario['telefone']}' where email = '{$usuario['email']}'";
+        return pg_query($conexao, $query);
+    }
     
     function inserirPet($conexao, $nome_pet, $dt_nascimento, $email_dono){
         $query = "insert into pet (nome_pet, dt_nascimento, email_dono) values ('$nome_pet', '$dt_nascimento', '$email_dono')";

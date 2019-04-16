@@ -41,6 +41,20 @@
         session_unset();            //limpar as variáveis globais da sessão
         header('Location:../../index.php');
     }
+#ALTERAR USUARIO
+    if(isset($_POST['alterarUsuario'])){
+        $nome = $_POST['nome'];
+        $endereco = $_POST['endereco'];
+        $telefone = $_POST['telefone'];
+        session_start();
+        $_SESSION['nome'] = $nome;
+        $_SESSION['endereco']= $endereco;
+        $_SESSION['telefone']= $telefone;
+        $usuario = alterarUsuario($conexao, $_SESSION);
+        echo('<pre>');
+        var_dump($_SESSION);
+        die;
+    }
 #INSERIR PET
     if(isset($_POST['inserirPet'])){
         $nomePet = $_POST['nome'];
