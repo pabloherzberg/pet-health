@@ -28,10 +28,10 @@
         session_start();
         $_SESSION = buscarUsuario($conexao,$email,$senha);
         if($_SESSION){
-            header('location:../home.php');
+            header('location:../../home.php');
         }
         else{
-            header('location:../index.php');
+            header('location:../../index.php');
         }
     }
 #DESLOGAR USUARIO
@@ -39,7 +39,7 @@
         session_start();            //iniciar a sessão
         session_destroy();          //destruir a sessão
         session_unset();            //limpar as variáveis globais da sessão
-        header('Location:../index.php');
+        header('Location:../../index.php');
     }
 #INSERIR PET
     if(isset($_POST['inserirPet'])){

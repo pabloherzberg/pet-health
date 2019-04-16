@@ -1,4 +1,4 @@
-<?php require('includes/cabecalho.php');
+<?php require('includes/componentes/cabecalho.php');
  if($_SESSION){
      header('location:home.php');
  }
@@ -8,9 +8,9 @@
 <title>Pet&Health</title>
 </head>
 <body>
-<?php require('includes/header.php') ?>
+<?php require('includes/componentes/header.php') ?>
 <main>
-        <form action="includes/logica.php" method="post">
+        <form action="includes/logica/logica.php" method="post">
             <div id="tela_selecionar" class="hide" >
                     <div class="btn" value='dono' id="btn_dono_pet">
                         <label for="btn_dono_pet">Dono Pet</label>
@@ -31,6 +31,6 @@
             </div>
         </form>
 </main>
-<?php require('includes/footer.php');?>
+<?php require('includes/componentes/footer.php');?>
 </body>
 </html>
