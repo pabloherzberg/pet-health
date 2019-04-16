@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-<?php
- include_once('includes/cabecalho.php');
-=======
 <?php require('includes/componentes/cabecalho.php');
->>>>>>> pdo
  if($_SESSION){
      header('location:home.php');
  }
