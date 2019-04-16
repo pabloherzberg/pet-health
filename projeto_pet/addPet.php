@@ -6,7 +6,7 @@ include_once('includes/cabecalho.php');
 <body>
 <header></header>
 <main>
-    <form action="includes/query.php" method="post">
+    <form action="includes/logica.php" method="post">
         <input type="text" name="nome">
         <input type="date" name="dt_nascimento">
         <input type="submit" name='inserirPet' value="Inserir pet">
