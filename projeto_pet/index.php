@@ -1,8 +1,8 @@
 <?php
  include_once('includes/cabecalho.php');
- if($_SESSION){
+ /*if($_SESSION){
      header('location:home.php');
- }
+ }*/
 ?>
     <link rel="stylesheet" href="assets/css/index.css">
     <title>Pet&Health</title>
