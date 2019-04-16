@@ -1,5 +1,6 @@
 <?php require('includes/componentes/cabecalho.php');
  if($_SESSION){
+
      header('location:home.php');
  }
 ?>

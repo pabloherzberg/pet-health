@@ -62,17 +62,30 @@
         echo($dt_nascimento);
         session_start();
         inserirPet($conexao, $nomePet, $dt_nascimento, $_SESSION['email']);
-        header('location:../home.php');
+        header('location:../../home.php');
     }
 
+#REMOVER PET
+    if(isset($_POST['removerPet'])){
+        $codPet = $_POST['cod_pet'];
+        removerPet($conexao, $codPet);
+        header('location: ../../addPet.php');
+    }
+
+#ATUALIZAR PET
+    if(isset($_POST['atualizarPet'])){
+        $codPet = $_POST['cod_pet'];
+        $nomePet = $_POST['nome_pet'];
+        $nasc = $_POST['dt_nascimento'];
+       $pet = atualizarPet($conexao, $codPet, $nomePet, $nasc);
+        header('location: ../../addPet.php');
+    }
 #INSERIR MEDICAMENTO
-    if(isset($_POST['inserirMedicamento'])){
+    if(isset($_POST['cadastrarMedicamento'])){
         $nomeMedicamento = $_POST['nome'];
         $dt_validade= $_POST['validade'];
-        inserirMedcamento($conexao, $nomeMedicamento, $dt_validade);
-        header('location:../historico.php');
+        inserirMedicamento($conexao, $nomeMedicamento, $dt_validade);
+        header('location:../../home.php'); // -------->>> mudar isso para histórico posteriormente
     }
-
-    
 
 ?>

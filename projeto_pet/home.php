@@ -15,6 +15,7 @@
         <a href="historico.php">Históricos</a>
         <a href="alteraCadastro">Alterar cadastro</a>
         <a href="calendario.php">Checar calendário</a>
+        <a href="inserirMedicamento.php">Add medicamento</a>
     </nav>
     
 </main>
