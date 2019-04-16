@@ -1,16 +1,12 @@
 <?php
- include_once('includes/cabecalho.php');
+ include_once('includes/componentes/cabecalho.php');
 ?>
     <link rel="stylesheet" href="assets/css/index.css">
     <title>Pet&Health</title>
 </head>
 <body>
-    <header>
-        <figure>
-            <img id="logo" src="assets/img/logo.png" alt="logo da empresa">
-        </figure>
-    </header>
-    <main>
+<?php require('includes/componentes/header.php') ?>
+<main>
     <h1>Bem vind@,</h1>
     <p><?php echo($_SESSION['nome']); ?></p>
     <nav>
@@ -21,9 +17,7 @@
         <a href="calendario.php">Checar calendário</a>
     </nav>
     
-    </main>
-    <footer>   
-        <p>Patrocinadores:</p>
-    </footer>
+</main>
+<?php require('includes/componentes/footer.php');?>
 </body>
 </html>
