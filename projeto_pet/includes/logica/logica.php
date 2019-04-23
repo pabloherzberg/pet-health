@@ -23,7 +23,7 @@
     }
 #ACESSAR USUARIO
     if(isset($_POST['acessar'])){
-        $email = $_POST['email'];
+        $email = addslashes($_POST['email']);//impede que o sql seja alterado
         $senha = $_POST['senha'];
         session_start();
         $_SESSION = buscarUsuario($conexao,$email,$senha);
