@@ -73,7 +73,7 @@
     }
 
 #ATUALIZAR PET
-    if(isset($_POST['atualizarPet'])){
+    if(isset($_POST['atualizaPet'])){
         $codPet = $_POST['cod_pet'];
         $nomePet = $_POST['nome_pet'];
         $nasc = $_POST['dt_nascimento'];

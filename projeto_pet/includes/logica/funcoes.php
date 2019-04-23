@@ -51,6 +51,14 @@
         return $resultado;
     }
 
+    function buscaPet($conexao, $email, $codPet){
+        $pet = array();
+        $query = "select * from pet where email_dono ='$email' and cod_pet= $codPet";
+        $resultado = pg_query($conexao, $query);
+        $pet = pg_fetch_array($resultado);
+        return $pet;
+    }
+
      // ------ FUNÇÕES PARA MEDICAMENTOS ------
 
      function inserirMedicamento($conexao, $nomeMedicamento, $dt_validade){

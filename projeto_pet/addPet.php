@@ -10,6 +10,9 @@ include_once('includes/logica/conecta.php');
     include_once("includes/componentes/header.php");
 ?>
 <main>
+<nav>
+<a href="home.php">Home</a>
+</nav>
 <?php
     $email = $_SESSION['email'];
     $pets = listarPets($conexao, $email);
@@ -23,11 +26,15 @@ include_once('includes/logica/conecta.php');
         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
         <input type="hidden" name="nome_pet" value="<?=$pet['nome_pet']?>" />
         <input type="hidden" name="dt_nascimento" value="<?=$pet['dt_nascimento']?>" />
-        <input type="submit" name="atualizarPet" value="Atualizar Cadastro Pet"/>
+        
+    </form>
+    <form action="alteraPet.php" method="post">
+        <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
+        <input type="submit" class="btn cadastro" name="atualizaPet" value="Atualizar Cadastro Pet"/>
     </form>
      <form action="includes/logica/logica.php" method="post">
         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
-        <input type="submit" name="removerPet" value="Remover Pet"/>
+        <input type="submit" class="btn cadastro" name="removerPet" value="Remover Pet"/>
     </form>
 </div>
 <?php
@@ -36,7 +43,7 @@ include_once('includes/logica/conecta.php');
 ?>
 
     <form action="includes/logica/logica.php" method="post">
-        <input type="text" name="nome">
+        <input type="text" name="nome" placeholder="nome do Pet">
         <input type="date" name="dt_nascimento">
         <input type="submit" class="btn cadastro" name='inserirPet' value="Inserir pet">
     </form>
