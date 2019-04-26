@@ -1,7 +1,6 @@
 <?php
     require_once('conecta.php');
     require_once('funcoes.php');
-
 #CADASTRO USUÁRIO
     if(isset($_POST['enviar'])){
         $nome = $_POST['nome'];

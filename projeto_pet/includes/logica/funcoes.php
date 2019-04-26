@@ -1,22 +1,27 @@
 <?php
-    function inserirUsuario($array){
+    function inserirUsuario($conexao,$array){
         if(count($array)==6){
-            $stmt = $pdo->prepare("insert into usuario(nome, email, senha, endereco, telefone, crmv) values (?, ?, ?, ?, ?, ?)");
-            $query = $stmt->execute($array);
+            $usuarios = $conexao->prepare("insert into usuario(nome, email, senha, endereco, telefone, crmv) values (?, ?, ?, ?, ?, ?)");
+            $query = $usuarios->execute($array);
         }
         else{
-            $stmt = $pdo->prepare("insert into usuario(nome, email, senha, endereco, telefone) values (?, ?, ?, ?, ?)");
-            $query = $stmt->execute($array);
+            $usuarios = $conexao->prepare("insert into usuario(nome, email, senha, endereco, telefone) values (?, ?, ?, ?, ?)");
+            $query = $usuarios->execute($array);
         }
         return $query;
         /*Se o array possuir 6 posições é pq inclui o CRMV, logo o usuário é um VETERINÁRIO*/
     }
 
-    function buscarUsuario($conexao, $email, $senha){
-        $query = "select * from usuario where email ='$email' and senha = '$senha'";
-        $dado_tabular = pg_query($conexao, $query);
-        $array_dados = pg_fetch_array($dado_tabular);
-        return $array_dados;
+    function buscarUsuario($conexao,$email, $senha){
+        $array = array($email, $senha);
+        $usuarios = $conexao->prepare("select * from usuario where email= ? and senha= ? ");
+        if($usuarios->execute($array)){
+            $usuario = $usuarios->fetch(); //coloca os dados num array $usuario
+            return $usuario;
+        }
+        else{
+            return false;
+        }
     }
     
     function inserirPet($conexao, $nome_pet, $dt_nascimento, $email_dono){
