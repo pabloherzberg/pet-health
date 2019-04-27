@@ -1,20 +1,27 @@
 <?php
-    function inserirUsuario($conexao, $array){
+    function inserirUsuario($conexao,$array){
         if(count($array)==6){
-            $query = "insert into usuario(nome, email, senha, endereco, telefone, crmv) values ('$array[0]', '$array[1]', '$array[2]', '$array[3]', '$array[4]', '$array[5]')";
+            $usuarios = $conexao->prepare("insert into usuario(nome, email, senha, endereco, telefone, crmv) values (?, ?, ?, ?, ?, ?)");
+            $query = $usuarios->execute($array);
         }
         else{
-            $query = "insert into usuario(nome, email, senha, endereco, telefone) values ('$array[0]', '$array[1]', '$array[2]', '$array[3]', '$array[4]')";
+            $usuarios = $conexao->prepare("insert into usuario(nome, email, senha, endereco, telefone) values (?, ?, ?, ?, ?)");
+            $query = $usuarios->execute($array);
         }
-        return pg_query($conexao,$query);
+        return $query;
         /*Se o array possuir 6 posições é pq inclui o CRMV, logo o usuário é um VETERINÁRIO*/
     }
 
-    function buscarUsuario($conexao, $email, $senha){
-        $query = "select * from usuario where email ='$email' and senha = '$senha'";
-        $dado_tabular = pg_query($conexao, $query);
-        $array_dados = pg_fetch_array($dado_tabular);
-        return $array_dados;
+    function buscarUsuario($conexao,$email, $senha){
+        $array = array($email, $senha);
+        $usuarios = $conexao->prepare("select * from usuario where email= ? and senha= ? ");
+        if($usuarios->execute($array)){
+            $usuario = $usuarios->fetch(); //coloca os dados num array $usuario
+            return $usuario;
+        }
+        else{
+            return false;
+        }
     }
 
     function alterarUsuario($conexao, $usuario){
@@ -26,14 +33,13 @@
     // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){
         $pets = array();
-        $query = "select * from pet where email_dono ='$email'";
-        $resultado = pg_query($conexao, $query);
-        while($pet = pg_fetch_assoc($resultado)){
-            array_push($pets, $pet);            
-        }
+        $resultado = $conexao->prepare("select * from pet where email_dono = ?");
+        $pets = $resultado->execute($email);
+       
         return $pets;
     }
 
+    
     function inserirPet($conexao, $nome_pet, $dt_nascimento, $email_dono){
         $query = "insert into pet (nome_pet, dt_nascimento, email_dono) values ('$nome_pet', '$dt_nascimento', '$email_dono')";
         return pg_query($conexao, $query);

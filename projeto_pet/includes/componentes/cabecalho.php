@@ -10,4 +10,4 @@ require('includes/logica/funcoes.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../../assets/js/jquery/index.js"></script>
+    <script src="assets/js/jquery/index.js"></script>
