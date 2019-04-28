@@ -32,10 +32,11 @@
 
     // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){
-        $pets = array();
-        $resultado = $conexao->prepare("select * from pet where email_dono = ?");
-        $pets = $resultado->execute($email);
-       
+        
+        $dados_pets = $conexao->query("SELECT * FROM pet WHERE email_dono = '$email'");
+        
+        $pets = $dados_pets->fetchAll();
+               
         return $pets;
     }
 
