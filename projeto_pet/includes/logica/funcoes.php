@@ -23,7 +23,12 @@
             return false;
         }
     }
-
+    function alterarUsuario($conexao, $array, $email){
+        $usuarios = $conexao->prepare("update usuario set nome= ?, senha= ?, endereco= ?, telefone= ? where email = '$email'");
+        $query = $usuarios->execute($array);
+        
+        return $query;
+    }
 // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){
         $pets = array();

@@ -18,7 +18,7 @@
             $array = array($nome, $email, $senha, $endereco, $telefone);
         }
         inserirUsuario($conexao, $array);
-        header('location:../index.php');
+        header('location:../../index.php');
     }
 #ACESSAR USUARIO
     if(isset($_POST['acessar'])){
@@ -32,6 +32,39 @@
         else{
             header('location:../../index.php');
         }
+    }
+#ALTERAR USUÁRIO
+    if(isset($_POST['alterar'])){
+        session_start();
+        if(empty($_POST['nome'])){
+            $nome = $_SESSION['nome'];
+        }
+        else{
+            $nome = $_POST['nome'];
+        };
+        $email = $_SESSION['email'];
+        if(empty($_POST['senha'])){
+            $senha = $_SESSION['senha'];
+        }
+        else{
+            $senha = $_POST['senha'];
+        };
+        if(empty($_POST['endereco'])){
+            $endereco = $_SESSION['endereco'];
+        }
+        else{
+            $endereco = $_POST['endereco'];
+        };
+        if(empty($_POST['telefone'])){
+            $telefone = $_SESSION['telefone'];
+        }
+        else{
+            $telefone = $_POST['telefone'];
+        }     
+        $array = array($nome, $senha, $endereco, $telefone);
+        alterarUsuario($conexao, $array, $email);
+        $_SESSION = buscarUsuario($conexao, $email, $senha);
+        header('location:../../index.php');
     }
 #DESLOGAR USUARIO
     if(isset($_POST['deslogar'])){
