@@ -42,18 +42,7 @@
         return $pets;
     }
 
-    
-    
-// ------ FUNÇÕES PARA PETS --------
-    function listarPets($conexao, $email){
-        $pets = array();
-        $query = "select * from pet where email_dono ='$email'";
-        $resultado = pg_query($conexao, $query);
-        while($pet = pg_fetch_assoc($resultado)){
-            array_push($pets, $pet);            
-        }
-        return $pets;
-    }
+
 
     function inserirPet($conexao, $nome_pet, $dt_nascimento, $email_dono){
         $query = "insert into pet (nome_pet, dt_nascimento, email_dono) values ('$nome_pet', '$dt_nascimento', '$email_dono')";
