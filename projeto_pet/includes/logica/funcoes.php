@@ -23,6 +23,7 @@
             return false;
         }
     }
+<<<<<<< HEAD
 
     function alterarUsuario($conexao, $usuario){
         $query = "update usuario set nome = '{$usuario['nome']}', endereco = '{$usuario['endereco']}', telefone = '{$usuario['telefone']}' where email = '{$usuario['email']}'";
@@ -41,6 +42,25 @@
     }
 
     
+=======
+    function alterarUsuario($conexao, $array, $email){
+        $usuarios = $conexao->prepare("update usuario set nome= ?, senha= ?, endereco= ?, telefone= ? where email = '$email'");
+        $query = $usuarios->execute($array);
+        
+        return $query;
+    }
+// ------ FUNÇÕES PARA PETS --------
+    function listarPets($conexao, $email){
+        $pets = array();
+        $query = "select * from pet where email_dono ='$email'";
+        $resultado = pg_query($conexao, $query);
+        while($pet = pg_fetch_assoc($resultado)){
+            array_push($pets, $pet);            
+        }
+        return $pets;
+    }
+
+>>>>>>> 4de520d5e5245843f208e03937497afd0d47b15e
     function inserirPet($conexao, $nome_pet, $dt_nascimento, $email_dono){
         $query = "insert into pet (nome_pet, dt_nascimento, email_dono) values ('$nome_pet', '$dt_nascimento', '$email_dono')";
         return pg_query($conexao, $query);
