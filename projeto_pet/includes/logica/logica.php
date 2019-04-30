@@ -116,5 +116,6 @@
         inserirMedicamento($conexao, $nomeMedicamento, $dt_validade);
         header('location:../../home.php'); // -------->>> mudar isso para histórico posteriormente
     }
+#BUSCAR MEDICAMENTO
 
 ?>
