@@ -6,4 +6,5 @@
         <form action="includes/logica/logica.php" method="post">
             <input type="submit" name="deslogar" value="Deslogar">
         </form>
+        <a href="alterarCadastro.php">Alterar Cadastro</a>
 </header>

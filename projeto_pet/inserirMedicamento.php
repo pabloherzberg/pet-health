@@ -1,27 +1,23 @@
 <?php
-    include_once("includes/cabecalho.php");
+    include_once("includes/componentes/cabecalho.php");
 ?>
 
-<!-- <link rel="stylesheet" href="assets/css/index.css"> -->
+<link rel="stylesheet" href="assets/css/index.css">
     <title>Cadastro de Medicamento</title>
 </head>
 <body>
-    <header>
-        <figure>
-            <img id="logo" src="assets/img/logo.png" alt="logo da empresa">
-        </figure>
-    </header>
+<?php
+    include_once("includes/componentes/header.php");
+?>
     <main>
-        <form action="includes/query.php" method="post">
+        <form action="includes/logica/logica.php" method="post">
             <div id="">
-                <input type="text" class='hide' name="nome" placeholder="nome">
-                <input type="date" name="validade" >
-                <input type="button" class="btn cadastro" id="cadastrarMedicamento" value="Cadastrar Medicamento">
+                Nome:<input type="text" name="nome" placeholder="nome">
+                Validade:<input type="date" name="validade" >
+                <input type="submit" class="btn cadastro" name="cadastrarMedicamento" value="Cadastrar Medicamento">
             </div>
         </form>
     </main>
-    <footer>   
-        <p>Patrocinadores:</p>
-    </footer>
+<?php require('includes/componentes/footer.php');?>
 </body>
 </html>

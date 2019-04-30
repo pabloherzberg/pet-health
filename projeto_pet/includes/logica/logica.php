@@ -22,7 +22,7 @@
     }
 #ACESSAR USUARIO
     if(isset($_POST['acessar'])){
-        $email = $_POST['email'];
+        $email = addslashes($_POST['email']);//impede que o sql seja alterado
         $senha = $_POST['senha'];
         session_start();
         $_SESSION = buscarUsuario($conexao,$email,$senha);
@@ -82,6 +82,20 @@
         session_unset();            //limpar as variáveis globais da sessão
         header('Location:../../index.php');
     }
+#ALTERAR USUARIO
+    if(isset($_POST['alterarUsuario'])){
+        $nome = $_POST['nome'];
+        $endereco = $_POST['endereco'];
+        $telefone = $_POST['telefone'];
+        session_start();
+        $_SESSION['nome'] = $nome;
+        $_SESSION['endereco']= $endereco;
+        $_SESSION['telefone']= $telefone;
+        $usuario = alterarUsuario($conexao, $_SESSION);
+        echo('<pre>');
+        var_dump($_SESSION);
+        die;
+    }
 #INSERIR PET
     if(isset($_POST['inserirPet'])){
         $nomePet = $_POST['nome'];
@@ -89,17 +103,30 @@
         echo($dt_nascimento);
         session_start();
         inserirPet($conexao, $nomePet, $dt_nascimento, $_SESSION['email']);
-        header('location:../home.php');
+        header('location:../../home.php');
     }
 
+#REMOVER PET
+    if(isset($_POST['removerPet'])){
+        $codPet = $_POST['cod_pet'];
+        removerPet($conexao, $codPet);
+        header('location: ../../addPet.php');
+    }
+
+#ATUALIZAR PET
+    if(isset($_POST['atualizaPet'])){
+        $codPet = $_POST['cod_pet'];
+        $nomePet = $_POST['nome_pet'];
+        $nasc = $_POST['dt_nascimento'];
+       $pet = atualizarPet($conexao, $codPet, $nomePet, $nasc);
+        header('location: ../../addPet.php');
+    }
 #INSERIR MEDICAMENTO
-    if(isset($_POST['inserirMedicamento'])){
+    if(isset($_POST['cadastrarMedicamento'])){
         $nomeMedicamento = $_POST['nome'];
         $dt_validade= $_POST['validade'];
-        inserirMedcamento($conexao, $nomeMedicamento, $dt_validade);
-        header('location:../historico.php');
+        inserirMedicamento($conexao, $nomeMedicamento, $dt_validade);
+        header('location:../../home.php'); // -------->>> mudar isso para histórico posteriormente
     }
-
-    
 
 ?>
