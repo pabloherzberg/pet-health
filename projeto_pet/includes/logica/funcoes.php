@@ -37,46 +37,45 @@
     }
 // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){
-        
-        $dados_pets = $conexao->query("SELECT * FROM pet WHERE email_dono = '$email'");
-        
-        $pets = $dados_pets->fetchAll();
-               
-        return $pets;
+        $array = array($email);
+        $dados_pets = $conexao->prepare("SELECT * FROM pet WHERE email_dono = ?");      
+        $dados_pets->execute($array);
+        $query = $dados_pets->fetchAll();
+        return $query;
     }
-
-
-
-    function inserirPet($conexao, $nome_pet, $dt_nascimento, $email_dono){
-        $query = "insert into pet (nome_pet, dt_nascimento, email_dono) values ('$nome_pet', '$dt_nascimento', '$email_dono')";
-        return pg_query($conexao, $query);
+    function inserirPet($conexao, $array){
+        $pet = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, email_dono) values (?,?,?)");
+        $query = $pet->execute($array);
+        return $query;
     }
 
     function removerPet($conexao, $codPet){
-        $query = "delete from pet where cod_pet = '$codPet'";
-        $resultado = pg_query($conexao, $query);
-        return $resultado;
+        $deletar = $conexao->prepare("delete from pet where cod_pet = '$codPet'");
+        $query = $deletar->execute();
+        return $query;
     }
 
-    function atualizarPet($conexao, $codPet, $nomePet, $nasc){
-        $query = "update pet set nome_pet = '{$nomePet}', dt_nascimento = '{$nasc}' where cod_pet = '{$codPet}'";
-        $resultado = pg_query($conexao, $query);
-        return $resultado;
+    function atualizarPet($conexao, $array){
+        $usuarios = $conexao->prepare("update pet set nome_pet = ?, dt_nascimento = ? where cod_pet = ?");
+        $query = $usuarios->execute($array);
+        return $query;
     }
 
     function buscaPet($conexao, $email, $codPet){
-        $pet = array();
-        $query = "select * from pet where email_dono ='$email' and cod_pet= $codPet";
-        $resultado = pg_query($conexao, $query);
-        $pet = pg_fetch_array($resultado);
-        return $pet;
+        $array = array($email, $codPet);
+        $pet = $conexao->prepare("select * from pet where email_dono = ? and cod_pet= ?");
+        $query = $pet->execute($array);
+        $pets = $query->fetch(); //coloca os dados num array $usuario
+        return $pets;
     }
 
      // ------ FUNÇÕES PARA MEDICAMENTOS ------
 
      function inserirMedicamento($conexao, $nomeMedicamento, $dt_validade){
-        $query = "insert into medicamentos  (nome, validade) values ('$nomeMedicamento', '$dt_validade')";
-        return pg_query($conexao, $query);
+        $array = array($nomeMedicamento, $dt_validade);
+        $medicamento = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, email_dono) values (?,?,?)");
+        $query = $medicamento->execute($array);
+        return $query;
     }
      
 ?>

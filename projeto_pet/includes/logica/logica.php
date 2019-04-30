@@ -82,27 +82,14 @@
         session_unset();            //limpar as variáveis globais da sessão
         header('Location:../../index.php');
     }
-#ALTERAR USUARIO
-    if(isset($_POST['alterarUsuario'])){
-        $nome = $_POST['nome'];
-        $endereco = $_POST['endereco'];
-        $telefone = $_POST['telefone'];
-        session_start();
-        $_SESSION['nome'] = $nome;
-        $_SESSION['endereco']= $endereco;
-        $_SESSION['telefone']= $telefone;
-        $usuario = alterarUsuario($conexao, $_SESSION);
-        echo('<pre>');
-        var_dump($_SESSION);
-        die;
-    }
 #INSERIR PET
     if(isset($_POST['inserirPet'])){
         $nomePet = $_POST['nome'];
         $dt_nascimento = $_POST['dt_nascimento'];
-        echo($dt_nascimento);
         session_start();
-        inserirPet($conexao, $nomePet, $dt_nascimento, $_SESSION['email']);
+        $email = $_SESSION['email'];
+        $array = array($nomePet, $dt_nascimento, $email);
+        inserirPet($conexao, $array);
         header('location:../../home.php');
     }
 
@@ -118,7 +105,8 @@
         $codPet = $_POST['cod_pet'];
         $nomePet = $_POST['nome_pet'];
         $nasc = $_POST['dt_nascimento'];
-       $pet = atualizarPet($conexao, $codPet, $nomePet, $nasc);
+        $array = array($nomePet, $nasc, $codPet);
+       $pet = atualizarPet($conexao, $array);
         header('location: ../../addPet.php');
     }
 #INSERIR MEDICAMENTO
