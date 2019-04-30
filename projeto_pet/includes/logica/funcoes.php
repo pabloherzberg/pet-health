@@ -29,6 +29,11 @@
         
         return $query;
     }
+    function deletarUsuario($conexao, $email){
+        $deletar = $conexao->prepare("delete from usuario where email = '$email'");
+        $query = $deletar->execute();
+        return $query;
+    }
 // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){
         $pets = array();

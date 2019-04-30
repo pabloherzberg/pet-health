@@ -66,6 +66,15 @@
         $_SESSION = buscarUsuario($conexao, $email, $senha);
         header('location:../../index.php');
     }
+#DELETAR USUARO
+    if(isset($_POST['deletarUsuario'])){
+        session_start();
+        $email = $_SESSION['email'];
+        deletarUsuario($conexao, $email);
+        session_destroy();
+        session_unset();
+        header('Location:../../index.php');
+    }
 #DESLOGAR USUARIO
     if(isset($_POST['deslogar'])){
         session_start();            //iniciar a sessão

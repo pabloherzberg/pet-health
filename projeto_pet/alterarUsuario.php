@@ -21,7 +21,8 @@
         <input type="text" name="senha" placeholder="SENHA: <?php echo($_SESSION['senha'])?>">
         <input type="text" name="endereco" placeholder="ENDEREÇO: <?php echo($_SESSION['endereco'])?>">
         <input type="text" name="telefone" placeholder="TELEFONE: <?php echo($_SESSION['telefone'])?>">
-        <input type="submit" id='enviar' name='alterar' value="Enviar">            
+        <input type="submit" id='enviar' name='alterar' value="Enviar">
+        <input type="submit" name="deletarUsuario" value="Deletar">            
     </form>
 </main>
 <?php require('includes/componentes/footer.php');?>
