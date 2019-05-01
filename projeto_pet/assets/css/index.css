@@ -7,12 +7,13 @@
 body{
     width: 100vw;
     font-family: 'Arimo', sans-serif;
+    color: #292929;
 }
 header{
     padding-top:1.7em;
 }
 header figure{
-    background-color: #00dbbd;
+    background-color: #292929;
     width: 25vh;
     height: 25vh;
     border-radius: 50%;
@@ -26,7 +27,7 @@ header figure img{
 main{
     padding-top: 6em;
     width:100vw;
-    height: 80vh;
+    height: 100vh;
 }
 
 h1{
@@ -34,6 +35,7 @@ h1{
     font-size: 20pt;
     text-align: center;
     padding: 2pt;
+    color: #292929;
 }
 
 p{
@@ -41,12 +43,13 @@ p{
     text-align: center;
     padding: 2pt;
     margin-bottom: 2em;
+    color: #292929;
 }
 
 nav{
     display: inline-block;
     align-content: center;
-    background-color: aquamarine;
+    background-color: #C6E3AD;
 }
 
 form input{
@@ -59,7 +62,7 @@ form input{
     background-color:transparent;
 }
 input::placeholder{
-    color:black;
+    color:#292929;
     text-align: center;
     font-family: 'Arimo', sans-serif;
     font-size: 1.5em;
@@ -68,14 +71,15 @@ input::placeholder{
 .btn {
     margin-top:1em;
     font-family: 'Arimo', sans-serif;
+    color:#292929;
     font-size: 1em;
     font-weight: bolder;
     text-align: center;
-    border: solid 0.1em #00dbbd;
+    border: solid 0.1em #C6E3AD;
 }
 
 .cadastro{
-    background-color: #00dbbd;
+    background-color: #C6E3AD;
 }
 #tela_selecionar{
     position: absolute;
@@ -110,13 +114,14 @@ input::placeholder{
 }
 
 footer{
-    background-color: #079682;
-    height: 15vh;
+    margin-top:100vh;
+    background-color: #C6E3AD;
+    height: 25vh;
     width: 100vw;
 }
 
 footer p{
     text-align: left;
-    color: #ffffff;
+    color: #292929;
     padding: 5pt;
 }

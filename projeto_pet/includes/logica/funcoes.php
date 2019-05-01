@@ -68,6 +68,12 @@
         return $pets;
     }
 
+   /* function idadePet($conexao, $dt_nasc, $cod){
+        $idade = $conexao->prepare("select extract(year from age($dt_nasc)) from pet where cod_pet = $cod");
+        $query = $idade->execute();
+        
+        return $query;
+    }*/
      // ------ FUNÇÕES PARA MEDICAMENTOS ------
 
      function inserirMedicamento($conexao, $nomeMedicamento, $dt_validade){
