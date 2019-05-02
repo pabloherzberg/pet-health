@@ -86,9 +86,10 @@
     if(isset($_POST['inserirPet'])){
         $nomePet = $_POST['nome'];
         $dt_nascimento = $_POST['dt_nascimento'];
+        $raca=$_POST['raca'];
         session_start();
         $email = $_SESSION['email'];
-        $array = array($nomePet, $dt_nascimento, $email);
+        $array = array($nomePet, $dt_nascimento,$raca, $email);
         inserirPet($conexao, $array);
         header('location:../../home.php');
     }
@@ -105,7 +106,8 @@
         $codPet = $_POST['cod_pet'];
         $nomePet = $_POST['nome_pet'];
         $nasc = $_POST['dt_nascimento'];
-        $array = array($nomePet, $nasc, $codPet);
+        $raca=$_POST['raca'];
+        $array = array($nomePet, $nasc,$raca,$codPet);
        $pet = atualizarPet($conexao, $array);
         header('location: ../../addPet.php');
     }

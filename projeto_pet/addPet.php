@@ -19,19 +19,19 @@ include_once('includes/logica/conecta.php');
 
         foreach($pets as $pet):
     $dt_nasc = $pet['dt_nascimento'];
-    $cod = $pet['cod_pet'];
-    //$idade = idadePet($conexao, $dt_nasc,$cod);
+    $idade = idadePet($dt_nasc);
 
 ?>
 <div>
      <p>Nome: <?php echo $pet['nome_pet']; ?></p>
-     
+     <p><?php echo $idade; ?> anos</p>
      <p>Nascimento: <?php echo $pet['dt_nascimento']; ?></p>
+     <p>Raça: <?php echo $pet['raca']; ?></p>
      <form action="includes/logica/logica.php" method="post">
         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
         <input type="hidden" name="nome_pet" value="<?=$pet['nome_pet']?>" />
         <input type="hidden" name="dt_nascimento" value="<?=$pet['dt_nascimento']?>" />
-        
+        <input type="hidden" name="raca" value="<?=$pet['raca']?>" />
     </form>
     <form action="historico.php" method="post">
         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
@@ -53,6 +53,7 @@ include_once('includes/logica/conecta.php');
 
     <form action="includes/logica/logica.php" method="post">
         <input type="text" name="nome" placeholder="nome do Pet">
+        <input type="text" name="raca" placeholder="raça do Pet">
         <input type="date" name="dt_nascimento">
         <input type="submit" class="btn cadastro" name='inserirPet' value="Inserir pet">
     </form>

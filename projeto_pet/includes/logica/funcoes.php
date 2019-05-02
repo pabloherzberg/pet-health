@@ -43,7 +43,7 @@
         return $query;
     }
     function inserirPet($conexao, $array){
-        $pet = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, email_dono) values (?,?,?)");
+        $pet = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, raca, email_dono) values (?,?,?,?)");
         $query = $pet->execute($array);
         return $query;
     }
@@ -55,7 +55,7 @@
     }
 
     function atualizarPet($conexao, $array){
-        $usuarios = $conexao->prepare("update pet set nome_pet = ?, dt_nascimento = ? where cod_pet = ?");
+        $usuarios = $conexao->prepare("update pet set nome_pet = ?, dt_nascimento = ?, raca = ? where cod_pet = ?");
         $query = $usuarios->execute($array);
         return $query;
     }
@@ -72,19 +72,14 @@
         }
     }
 
-    function idadePet($conexao, $dt_nasc, $cod){
-        $array= array($dt_nasc, $cod);
-        $sql = "select to_char(age($dt_nasc), 'yy') from pet where cod_pet = $cod";
-        $query= $conexao->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        if($query->execute()){
-            $idadePet=$query->fetch();
-            return $idadePet;
-        }
-        else{
-            return false;
-        }
-                
+     function idadePet($dt_nasc){
+        $now= new DateTime();
+        $idade = $now->diff(new DateTime($dt_nasc));
+       
+        return $idade->y;
      }
+
+
      // ------ FUNÇÕES PARA MEDICAMENTOS ------
 
      function inserirMedicamento($conexao, $nomeMedicamento, $dt_validade){
