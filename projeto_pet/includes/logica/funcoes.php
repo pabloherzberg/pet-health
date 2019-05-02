@@ -62,18 +62,29 @@
 
     function buscaPet($conexao, $email, $codPet){
         $array = array($email, $codPet);
-        $pet = $conexao->prepare("select * from pet where email_dono = ? and cod_pet= ?");
-        $query = $pet->execute($array);
-        $pets = $query->fetch(); //coloca os dados num array $usuario
-        return $pets;
+        $pets = $conexao->prepare("select * from pet where email_dono = ? and cod_pet= ?");
+        if($pets->execute($array)){
+            $pet = $pets->fetch();
+            return $pet;
+        }
+        else{
+            return false;
+        }
     }
 
-   /* function idadePet($conexao, $dt_nasc, $cod){
-        $idade = $conexao->prepare("select extract(year from age($dt_nasc)) from pet where cod_pet = $cod");
-        $query = $idade->execute();
-        
-        return $query;
-    }*/
+    function idadePet($conexao, $dt_nasc, $cod){
+        $array= array($dt_nasc, $cod);
+        $sql = "select to_char(age($dt_nasc), 'yy') from pet where cod_pet = $cod";
+        $query= $conexao->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        if($query->execute()){
+            $idadePet=$query->fetch();
+            return $idadePet;
+        }
+        else{
+            return false;
+        }
+                
+     }
      // ------ FUNÇÕES PARA MEDICAMENTOS ------
 
      function inserirMedicamento($conexao, $nomeMedicamento, $dt_validade){
