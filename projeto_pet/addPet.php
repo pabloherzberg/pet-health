@@ -3,6 +3,7 @@ include_once('includes/componentes/cabecalho.php');
 include_once('includes/logica/conecta.php');
 ?>
   <link rel="stylesheet" href="assets/css/index.css">
+  <script src="assets/js/jquery/addPet.js"></script>
     <title>Pet</title>
 </head>
 <body>
@@ -50,14 +51,10 @@ include_once('includes/logica/conecta.php');
     endforeach;
 
 ?>
+<button id='botao'  onclick='criarFormPet()'>Adicionar Pet</button>
+<div id="formulario">
+</div>  
 
-    <form action="includes/logica/logica.php" method="post">
-        <input type="text" name="nome" placeholder="nome do Pet">
-        <input type="text" name="raca" placeholder="raça do Pet">
-        <input type="date" name="dt_nascimento">
-        <input type="submit" class="btn cadastro" name='inserirPet' value="Inserir pet">
-    </form>
-    
 </main>
 <?php require('includes/componentes/footer.php');?>
 </body>
