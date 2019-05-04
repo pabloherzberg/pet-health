@@ -2,7 +2,7 @@
     require_once('conecta.php');
     require_once('funcoes.php');
 #CADASTRO USUÁRIO
-    if(isset($_POST['enviar'])){
+    if(isset($_POST['cadastrar'])){
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
@@ -21,7 +21,7 @@
         header('location:../../index.php');
     }
 #ACESSAR USUARIO
-    if(isset($_POST['acessar'])){
+    if(isset($_POST['logar'])){
         $email = addslashes($_POST['email']);//impede que o sql seja alterado
         $senha = $_POST['senha'];
         session_start();

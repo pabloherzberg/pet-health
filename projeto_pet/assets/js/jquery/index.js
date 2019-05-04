@@ -1,40 +1,121 @@
-$(document).ready(
-    function(){
-        $('#cadastrar').click(function(){
-                $('#tela_selecionar').removeClass('hide');
-                $('#tela_selecionar').addClass('show');
-            }
-        );
-        $('#btn_veterinario').click(function(){
-                $('#tela_selecionar').removeClass('show');
-                $('#tela_selecionar').addClass('hide');
-                $('input').removeClass('hide');
-                $('input').addClass('show');
-                $('#cadastrar').hide();
-                $('#acessar').hide();
-                $('#enviar').before("<input type='text' id='crmv' name='crmv' placeholder='crmv'>");
-            }         
-        );
-        $('#btn_dono_pet').click(function(){
-                $('#tela_selecionar').removeClass('show');
-                $('#tela_selecionar').addClass('hide');
-                $('input').removeClass('hide');
-                $('input').addClass('show');
-                $('#crmv').addClass('hide');
-                $('#cadastrar').hide();
-                $('#acessar').hide();
-            }         
-        );
-        $('#tela_selecionar').click(
-            function(){
-                $('#tela_selecionar').removeClass('show');
-                $('#tela_selecionar').addClass('hide');
-            }
-        );
-        $('#addPet').click(
-            function(){
-                $('#addPet').before("<form action='includes/query.php' method='post'><input type='text' name='nome'><input type='date' name='dt_nascimento'><input type='submit' name='inserirPet' value='Inserir pet'></form>");
-            }
-        );
+
+function logar(){
+    const logar = document.getElementById('logar');
+    const cadastrar = document.getElementById('cadastrar');
+    logar.className='hide';
+    cadastrar.className='hide';
+
+    const div = document.getElementById('formulario');
+    const formulario = document.createElement('FORM');
+    const email = document.createElement('INPUT');
+    const senha = document.createElement('INPUT');
+    const submit = document.createElement('INPUT');
+
+    email.placeholder='email';
+    email.name='email';
+    email.type='text';
+    senha.placeholder='senha';
+    senha.name='senha';
+    senha.type='text';
+    submit.value='logar';
+    submit.name='logar';
+    submit.type='submit';
+
+    formulario.method='post';
+    formulario.action='includes/logica/logica.php';
+
+    div.appendChild(formulario).append(email,senha,submit);
+}
+
+function cadastrar(){
+    const logar = document.getElementById('logar');
+    const cadastrar = document.getElementById('cadastrar');
+
+    const dono = document.createElement('BUTTON');
+    const vet = document.createElement('BUTTON');
+    const div = document.getElementById('formulario');
+
+    dono.innerText='Dono';
+    vet.innerText='Veterinário';
+    
+    logar.parentNode.removeChild(logar);
+    cadastrar.parentNode.removeChild(cadastrar);
+
+    div.append(dono,vet);
+
+    dono.addEventListener('click',formDono);
+    vet.addEventListener('click',formVet);
+
+    function formDono(){
+        div.removeChild(dono);
+        div.removeChild(vet);
+        const formulario = document.createElement('FORM');
+        const nome = document.createElement('INPUT');
+        const email = document.createElement('INPUT');
+        const senha = document.createElement('INPUT');
+        const endereco = document.createElement('INPUT');
+        const telefone = document.createElement('INPUT');
+        const submit = document.createElement('INPUT');
+
+        nome.name='nome';
+        nome.placeholder='nome';
+        nome.type='text';
+        email.name='email';
+        email.placeholder='email';
+        email.type='text';
+        senha.name='senha';
+        senha.placeholder='senha';
+        senha.type='text';
+        endereco.name='endereco';
+        endereco.placeholder='endereco';
+        endereco.type='text';
+        telefone.name='telefone';
+        telefone.placeholder='telefone';
+        telefone.type='text';
+        submit.name='cadastrar';
+        submit.value='cadastrar';
+        submit.type='submit';
+        formulario.method='post';
+        formulario.action='includes/logica/logica.php';
+
+        div.appendChild(formulario).append(nome,email,senha,endereco,telefone,submit);
     }
-);
+    function formVet(){
+        div.removeChild(dono);
+        div.removeChild(vet);
+        const formulario = document.createElement('FORM');
+        const nome = document.createElement('INPUT');
+        const email = document.createElement('INPUT');
+        const senha = document.createElement('INPUT');
+        const endereco = document.createElement('INPUT');
+        const telefone = document.createElement('INPUT');
+        const crmv = document.createElement('INPUT');
+        const submit = document.createElement('INPUT');
+
+        nome.name='nome';
+        nome.placeholder='nome';
+        nome.type='text';
+        email.name='email';
+        email.placeholder='email';
+        email.type='text';
+        senha.name='senha';
+        senha.placeholder='senha';
+        senha.type='text';
+        endereco.name='endereco';
+        endereco.placeholder='endereco';
+        endereco.type='text';
+        telefone.name='telefone';
+        telefone.placeholder='telefone';
+        telefone.type='text';
+        crmv.name='crmv';
+        crmv.placeholder='crmv';
+        crmv.type='text';
+        submit.name='cadastrar';
+        submit.value='cadastrar';
+        submit.type='submit';
+        formulario.method='post';
+        formulario.action='includes/logica/logica.php';
+
+        div.appendChild(formulario).append(nome,email,senha,endereco,telefone,crmv,submit);
+    }
+}
