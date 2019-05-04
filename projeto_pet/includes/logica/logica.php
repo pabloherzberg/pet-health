@@ -120,4 +120,6 @@
     }
 #BUSCAR MEDICAMENTO
 
+//funções do HISTÓRICO
+#
 ?>
