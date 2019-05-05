@@ -2,6 +2,7 @@
 /*cores*/
 :root{
     --cor-logo: #292929;
+    --cor-background: #e8e8e8;
     --cor-main: #c6e3ad;
 }
 /*resets*/
@@ -42,19 +43,11 @@ input[type = submit]{
 /*fim resets*/
 body{
     display: grid;
-    grid-template-areas:"header"
-                        "main"
-                        "footer";
-}
-header{
-    grid-area: header;
-}
-main{
-    grid-area: main;
-    height: 70vh;
-}
-footer{
-    grid-area: footer;
+    grid-template-rows:1fr auto 1fr;
+    background-color: var(--cor-background);
+    background-image: url(/pet-health/projeto_pet/assets/img/patinhas.png);
+    background-position: 0% 0%;
+    background-size: 100%;
 }
 header nav ul{
     display: none;
@@ -181,6 +174,7 @@ main button{
     height: 8vh;
     width: 30vw;
     border-radius: 4px;
+    font-size: 1.2em;
 }
 #formulario{
     display: block;
