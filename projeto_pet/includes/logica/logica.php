@@ -118,8 +118,24 @@
         inserirMedicamento($conexao, $nomeMedicamento, $dt_validade);
         header('location:../../home.php'); // -------->>> mudar isso para histórico posteriormente
     }
-#BUSCAR MEDICAMENTO
+
 
 //funções do HISTÓRICO
-#
+#INSERIR MEDICAMENTO NO HISTÓRICO 
+    if(isset($_POST['inserirHistorico'])){
+        $codPet = $_POST['cod_pet'];
+        $nomeMedicamento = $_POST['nome'];
+        $dataHist=$_POST['dt_historico'];
+        $pessoa = $_POST['flag_veterinario'];
+        $observacoes = $_POST['observacoes'];
+        session_start();
+        $email = $_SESSION['email'];
+        inserirHistorico($conexao, $codPet, $nomeMedicamento, $dataHist, $pessoa, $observacoes);
+        header('location:../../home.php');
+    }
+
+#REMOVER HISTÓRICO
+#ALTERAR HISTÓRICO
+#BUSCAR HISTÓRICO
+
 ?>

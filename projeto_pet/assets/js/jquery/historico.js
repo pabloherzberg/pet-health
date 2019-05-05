@@ -1,27 +1,39 @@
 function criarFormHist(){
+    
     const div = document.getElementById('formulario');
     const botao = document.getElementById('botao');
     const form = document.createElement('FORM');
-    const nome = document.createElement('INPUT');
+    const nomeMedicamento = document.createElement('INPUT');
     const pessoa = document.createElement('INPUT');
+    const pet = document.createElement('INPUT');
     const data = document.createElement('INPUT');
     const observacao = document.createElement('TEXTAREA');
     const submit = document.createElement('INPUT');
 
     form.action="includes/logica/logica.php";
     form.method="post";
-    nome.type='text';
-    nome.placeholder='nome do medicamento';
-    nome.name='nome';
-    pessoa.type='text';
+    nomeMedicamento.type='text';
+    nomeMedicamento.placeholder='nome do medicamento';
+    nomeMedicamento.name='nome';
+    
+    pessoa.type='hidden';
     pessoa.name='flag_veterinario';
+    pessoa.value = tipo;
+    
+    pet.type='hidden';
+    pet.name='cod_pet';
+    pet.value= codPet;
+    
     data.type='date';
     data.name='dt_historico';
+    observacao.placeholder='Observações';
+    observacao.name='observacoes';
+    observacao.type='text';
     submit.type='submit';
     submit.name='inserirHistorico';
     submit.value='Enviar';
   
-    div.appendChild(form).append(nome,pessoa, data, submit);
+    div.appendChild(form).append(nomeMedicamento,pessoa,pet, data,observacao,submit);
     botao.className='hide';
   
   }

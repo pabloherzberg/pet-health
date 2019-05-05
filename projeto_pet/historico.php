@@ -3,7 +3,9 @@ include_once('includes/componentes/cabecalho.php');
 include_once('includes/logica/conecta.php');
 ?>
   <link rel="stylesheet" href="assets/css/index.css">
-  <script src="assets/js/jquery/historico.js"></script>
+  <script src="assets/js/jquery/historico.js">
+
+  </script>
     <title>Histórico</title>
 </head>
 <body>
@@ -18,8 +20,19 @@ include_once('includes/logica/conecta.php');
     $email = $_SESSION['email'];
     $codPet = $_POST['cod_pet'];
     $pet = buscaPet($conexao, $email, $codPet);
-
-?>
+    //buscar usuário 
+    $tipoUsuario = tipoUsuario($conexao,$email);
+    $tipo = $tipoUsuario['crmv'];
+    if($tipoUsuario['crmv'] !== NULL){
+        $tipo = true;
+    }else{
+        $tipo = false;
+    }
+   ?>
+<script>
+var tipo = "<?php echo $tipo; ?>";
+var codPet = "<?php echo $codPet; ?>"
+</script>
 <div>
      <p>Nome: <?php echo $pet['nome_pet']; ?></p>
      <p>Nascimento: <?php echo $pet['dt_nascimento']; ?></p>

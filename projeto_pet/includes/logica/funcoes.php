@@ -24,6 +24,14 @@
         }
     }
 
+    function tipoUsuario($conexao,$email){
+        $array = array($email);
+        $tipos = $conexao->prepare("select crmv from usuario where email= ? ");
+        $tipos->execute($array);
+        $tipo = $tipos->fetch(); 
+        return $tipo;
+    }
+
     function alterarUsuario($conexao, $array, $email){
         $usuarios = $conexao->prepare("update usuario set nome= ?, senha= ?, endereco= ?, telefone= ? where email = '$email'");
         $query = $usuarios->execute($array);
@@ -101,19 +109,43 @@
         return $query;
     }
     
-    function buscarMedicamento($conexao, $cod=null, $nome=null){
-        if(!isset($cod)){
-            $medicamento = $conexao->prepare("SELECT * FROM medicamentos where nome like lower('%$nome%')");
-            $medicamento->execute();
-            $query = $medicamento->fetchAll();
-            return $query;
-        }
-        if(!isset($nome)){
-            $medicamento = $conexao->prepare("SELECT * FROM medicamentos where cod_medicamento = $cod");
-            $medicamento->execute();
-            $query = $medicamento->fetchAll();
-            return $query;
-        }
-        
+    function buscarMedicamento($conexao, $nomeMed){
+        $medicamentos = $conexao->prepare("select cod_medicamento from medicamentos where lower(nome) like lower('%$nomeMed%')");
+        $medicamentos->execute();
+        $codMedicamento = $medicamentos->fetch();
+
+        return $codMedicamento;
     }
+
+   // ------ FUNÇÕES PARA MEDICAMENTOS ------
+    function inserirHistorico($conexao,$codPet, $nomeMedicamento, $dataHist, $pessoa, $observacoes){
+        $array = array($dataHist, $observacoes,$pessoa,$codPet);
+        $historico = $conexao->prepare("insert into historico (dt_historico, observacoes,flag_veterinario,cod_pet) values (?,?,?,?)");
+        $query = $historico->execute($array);
+        
+        
+        //aqui eu preciso de um jeito de pegar o cod do historico recém criado
+        //add o campo hora na tabela historico, passar ele como argumento e usar isso pra buscar o codgigo do historico
+        $histSelecionar = $conexao->();
+        $codHist = $histSelecionar[0];
+        echo $codHist;
+        die;
+        
+        //selecionar o código do medicamento
+        $nomeMed = $nomeMedicamento;
+        $medicamento = buscarMedicamento($conexao,$nomeMed);
+        $codMedicamento = $medicamento[0];
+        //inserir codigo do medicamento e do historico na tabela medicamento_historico
+        inserirMedHist($conexao,$codMedicamento, $codHist);
+
+        return $query;
+    }
+
+    function inserirMedHist($conexao,$codMedicamento, $codHist){
+        $array = array($medicamento, $codHist);
+        $medHist = $conexao->prepare("insert into medicamento_historico (cod_medicamento, cod_historico) values (?,?)");
+        $query = $medHist->execute($array);
+        return $query;
+    }
+
 ?>
