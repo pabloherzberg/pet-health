@@ -126,10 +126,10 @@
         
         //aqui eu preciso de um jeito de pegar o cod do historico recém criado
         //add o campo hora na tabela historico, passar ele como argumento e usar isso pra buscar o codgigo do historico
-        $histSelecionar = $conexao->();
+        /*$histSelecionar = $conexao->();
         $codHist = $histSelecionar[0];
         echo $codHist;
-        die;
+        die;*/
         
         //selecionar o código do medicamento
         $nomeMed = $nomeMedicamento;
