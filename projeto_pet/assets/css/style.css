@@ -179,3 +179,45 @@ main button{
 #formulario{
     display: block;
 }
+footer{
+    display: grid;
+    grid-template-areas: ". . . . . ." 
+                         "logo titulo titulo titulo . ."
+                         ". contato . . facebook instagram"
+                         ". sobre . marca marca marca";
+}
+footer #footerFigure{
+    grid-area: logo;
+    background-color: var(--cor-logo);
+    border-radius: 50%;
+    height: 10vh;
+    width: 10vh;
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%, -50%);
+}
+footer #footerFigure img{
+    max-width: 8vh;
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%, -50%);
+}
+footer h4{
+    grid-area: titulo;
+    text-align: center;
+}
+footer #contato{
+    grid-area: contato;
+}
+footer #sobre{
+    grid-area: sobre;
+}
+footer #facebook{
+    grid-area: facebook;
+}
+footer #instagram{
+    grid-area: instagram;
+}
+footer p{
+    grid-area: marca;
+}
