@@ -11,8 +11,13 @@
     padding: 0px;
     box-sizing: border-box;
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
 a:link {
     text-decoration: none;
+    color: inherit;
 }
 
 a:visited {
@@ -22,6 +27,7 @@ a:visited {
 
 a:hover {
     text-decoration: none;
+    color: inherit;
 }
 
 a:active {
@@ -43,7 +49,7 @@ input[type = submit]{
 /*fim resets*/
 body{
     display: grid;
-    grid-template-rows:1fr auto 1fr;
+    grid-template-rows:50vh auto 1fr;
     background-color: var(--cor-background);
     background-image: url(/pet-health/projeto_pet/assets/img/patinhas.png);
     background-position: 0% 0%;
@@ -163,10 +169,9 @@ header h5{
     text-align: center;
 }
 /*MAIN*/
-main div{
-    padding-top: 10vh;
-    margin-left: 35vw;
-    transform: translateX(-25%);
+main section{
+    display: block;
+    height: auto;
 }
 main button{
     background-color: var(--cor-main);
