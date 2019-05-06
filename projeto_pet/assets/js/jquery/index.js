@@ -1,10 +1,6 @@
-
 function logar(){
     const logar = document.getElementById('logar');
     const cadastrar = document.getElementById('cadastrar');
-    logar.className='hide';
-    cadastrar.className='hide';
-
     const div = document.getElementById('formulario');
     const formulario = document.createElement('FORM');
     const email = document.createElement('INPUT');
@@ -23,7 +19,8 @@ function logar(){
 
     formulario.method='post';
     formulario.action='includes/logica/logica.php';
-
+    logar.parentNode.removeChild(logar);
+    cadastrar.parentNode.removeChild(cadastrar);
     div.appendChild(formulario).append(email,senha,submit);
 }
 
