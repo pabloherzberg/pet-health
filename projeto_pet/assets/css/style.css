@@ -180,44 +180,86 @@ main button{
     display: block;
 }
 footer{
+    background-color: var(--cor-main);
     display: grid;
-    grid-template-areas: ". . . . . ." 
+    grid-template-columns: repeat(6, 15vw);
+    grid-gap: 1.5vw;
+    grid-template-rows: repeat(6, 15vw);
+    grid-template-areas: " . . . . . ."
+                         " . . . . . ." 
+                         " . . . . . ."
                          "logo titulo titulo titulo . ."
-                         ". contato . . facebook instagram"
-                         ". sobre . marca marca marca";
+                         ". contato contato . facebook instagram"
+                         ". sobre sobre . marca marca";
 }
 footer #footerFigure{
     grid-area: logo;
     background-color: var(--cor-logo);
     border-radius: 50%;
-    height: 10vh;
-    width: 10vh;
+    height: 12vw;
+    width: 12vw;
     margin-left: 50%;
     margin-top: 50%;
     transform: translate(-50%, -50%);
 }
 footer #footerFigure img{
-    max-width: 8vh;
+    max-width: 5.5vh;
     margin-left: 50%;
     margin-top: 50%;
     transform: translate(-50%, -50%);
 }
 footer h4{
     grid-area: titulo;
-    text-align: center;
+    text-align: left;
+    line-height: 12vw;
 }
 footer #contato{
     grid-area: contato;
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 12vw;
 }
 footer #sobre{
     grid-area: sobre;
+    font-size: .9em;
+    font-weight: bold;
+    font-weight: bold;
+    text-align: center;
+    line-height: 12vw;
 }
 footer #facebook{
     grid-area: facebook;
+    height: 12vw;
+    width: 12vw;
+    margin-top: 50%;
+    margin-left: 0;
+    transform: translateY(-50%);
+
+}
+footer #facebook img{
+    max-width: 6vh;
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%, -50%);
 }
 footer #instagram{
     grid-area: instagram;
+    height: 12vw;
+    width: 12vw;
+    margin-top: 50%;
+    margin-left: 0;
+    transform: translateY(-50%);
+}
+footer #instagram img{
+    max-width: 6vh;
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%, -50%);
 }
 footer p{
     grid-area: marca;
+    text-align: center;
+    line-height: 12vw;
+    font-size: .75em;
 }
