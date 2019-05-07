@@ -7,6 +7,7 @@ function criarFormHist(){
     const pessoa = document.createElement('INPUT');
     const pet = document.createElement('INPUT');
     const data = document.createElement('INPUT');
+    const hora = document.createElement('INPUT');
     const observacao = document.createElement('TEXTAREA');
     const submit = document.createElement('INPUT');
 
@@ -26,14 +27,20 @@ function criarFormHist(){
     
     data.type='date';
     data.name='dt_historico';
+
+    hora.type='hidden';
+    hora.name='hora';
+    hora.value= new Date().getTime();
+    
     observacao.placeholder='Observações';
     observacao.name='observacoes';
     observacao.type='text';
+
     submit.type='submit';
     submit.name='inserirHistorico';
     submit.value='Enviar';
   
-    div.appendChild(form).append(nomeMedicamento,pessoa,pet, data,observacao,submit);
+    div.appendChild(form).append(nomeMedicamento,pessoa,pet, data,hora,observacao,submit);
     botao.className='hide';
   
   }

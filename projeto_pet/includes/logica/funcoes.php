@@ -118,11 +118,10 @@
     }
 
    // ------ FUNÇÕES PARA MEDICAMENTOS ------
-    function inserirHistorico($conexao,$codPet, $nomeMedicamento, $dataHist, $pessoa, $observacoes){
-        $array = array($dataHist, $observacoes,$pessoa,$codPet);
-        $historico = $conexao->prepare("insert into historico (dt_historico, observacoes,flag_veterinario,cod_pet) values (?,?,?,?)");
-        $query = $historico->execute($array);
-        
+    function inserirHistorico($conexao,$codPet, $nomeMedicamento, $dataHist,$hora, $pessoa, $observacoes ){
+        $array = array($dataHist, $observacoes,$pessoa,$codPet,$hora);
+        $historico = $conexao->prepare("insert into historico (dt_historico, observacoes,flag_veterinario,cod_pet,hora) values (?,?,?,?,?)");
+        $query = $historico->execute($array);        
         
         //aqui eu preciso de um jeito de pegar o cod do historico recém criado
         //add o campo hora na tabela historico, passar ele como argumento e usar isso pra buscar o codgigo do historico
@@ -132,11 +131,11 @@
         die;*/
         
         //selecionar o código do medicamento
-        $nomeMed = $nomeMedicamento;
+       /* $nomeMed = $nomeMedicamento;
         $medicamento = buscarMedicamento($conexao,$nomeMed);
         $codMedicamento = $medicamento[0];
         //inserir codigo do medicamento e do historico na tabela medicamento_historico
-        inserirMedHist($conexao,$codMedicamento, $codHist);
+        inserirMedHist($conexao,$codMedicamento, $codHist);*/
 
         return $query;
     }

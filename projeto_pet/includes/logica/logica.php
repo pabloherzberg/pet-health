@@ -126,11 +126,12 @@
         $codPet = $_POST['cod_pet'];
         $nomeMedicamento = $_POST['nome'];
         $dataHist=$_POST['dt_historico'];
+        $hora=$_POST['hora'];
         $pessoa = $_POST['flag_veterinario'];
         $observacoes = $_POST['observacoes'];
         session_start();
         $email = $_SESSION['email'];
-        inserirHistorico($conexao, $codPet, $nomeMedicamento, $dataHist, $pessoa, $observacoes);
+        inserirHistorico($conexao, $codPet, $nomeMedicamento, $dataHist,  $hora, $pessoa, $observacoes);
         header('location:../../home.php');
     }
 
