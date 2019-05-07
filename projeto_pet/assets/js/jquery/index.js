@@ -6,7 +6,10 @@ function logar(){
     const email = document.createElement('INPUT');
     const senha = document.createElement('INPUT');
     const submit = document.createElement('INPUT');
+    const section = document.getElementsByClassName('texto');
 
+    section[1].style.display='none';
+    section[0].style.display='none';
     email.placeholder='email';
     email.name='email';
     email.type='text';
@@ -16,7 +19,6 @@ function logar(){
     submit.value='logar';
     submit.name='logar';
     submit.type='submit';
-
     formulario.method='post';
     formulario.action='includes/logica/logica.php';
     logar.parentNode.removeChild(logar);
@@ -27,25 +29,30 @@ function logar(){
 function cadastrar(){
     const logar = document.getElementById('logar');
     const cadastrar = document.getElementById('cadastrar');
-
     const dono = document.createElement('BUTTON');
     const vet = document.createElement('BUTTON');
     const div = document.getElementById('formulario');
+    const footer = document.getElementById('footer');
+    const root = document.documentElement;
+    const body = document.body;
+    const section = document.getElementsByClassName('texto');
 
     dono.innerText='Dono';
     vet.innerText='Veterinário';
-    
     logar.parentNode.removeChild(logar);
     cadastrar.parentNode.removeChild(cadastrar);
-
+    section[0].style.display ='none';
+    section[1].style.display='none';
     div.append(dono,vet);
-
+    root.style.setProperty('--principal', '#78acec');
+    root.style.setProperty('--background', '#e1e1e1');
+    body.style.backgroundImage ='url(null)';
+    footer.style.backgroundImage = "url(/pet-health/projeto_pet/assets/img/cadastro_selecionar.png)"
+    footer.style.backgroundPosition = "48% 137%";
     dono.addEventListener('click',formDono);
     vet.addEventListener('click',formVet);
 
     function formDono(){
-        div.removeChild(dono);
-        div.removeChild(vet);
         const formulario = document.createElement('FORM');
         const nome = document.createElement('INPUT');
         const email = document.createElement('INPUT');
@@ -54,6 +61,8 @@ function cadastrar(){
         const telefone = document.createElement('INPUT');
         const submit = document.createElement('INPUT');
 
+        div.removeChild(dono);
+        div.removeChild(vet);
         nome.name='nome';
         nome.placeholder='nome';
         nome.type='text';
@@ -74,8 +83,11 @@ function cadastrar(){
         submit.type='submit';
         formulario.method='post';
         formulario.action='includes/logica/logica.php';
-
         div.appendChild(formulario).append(nome,email,senha,endereco,telefone,submit);
+        footer.style.backgroundImage = "url(/pet-health/projeto_pet/assets/img/cadastro.png)";
+        footer.style.backgroundPosition = "50% 85%";
+        root.style.setProperty('--background', '#d5f0f1');
+        root.style.setProperty('--principal','#6ebcbf');
     }
     function formVet(){
         div.removeChild(dono);
@@ -112,7 +124,10 @@ function cadastrar(){
         submit.type='submit';
         formulario.method='post';
         formulario.action='includes/logica/logica.php';
-
         div.appendChild(formulario).append(nome,email,senha,endereco,telefone,crmv,submit);
+        footer.style.backgroundImage = "url(/pet-health/projeto_pet/assets/img/cadastro_vet.png)";
+        footer.style.backgroundPosition = "50% 85%";
+        root.style.setProperty('--background', '#cdf9dc');
+        root.style.setProperty('--principal','#6ebf89');
     }
 }
