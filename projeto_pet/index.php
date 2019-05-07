@@ -5,7 +5,7 @@
  }
 ?>
 <link rel="stylesheet" href="assets/css/index.css">
-<script src="assets/js/jquery/index.js"></script>
+<script src="assets/js/index.js"></script>
 <title>Pet&Health</title>
 </head>
 <body>
