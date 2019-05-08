@@ -1,5 +1,5 @@
 <header>
-    <nav id='menu'>
+    <nav id='menu'>;
         <div id='botaoMenu' onclick='expandir()'></div>
         <ul id='listaMenu'>
             <li><a href="addPet.php">Adicionar Pet</a></li>
@@ -23,7 +23,7 @@
         </ul>
     </nav>
     <figure>
-        <img id="logo" src="assets/img/pet.png" alt="logo da empresa">
+        <a href="index.php"><img id="logo" src="assets/img/pet.png" alt="logo da empresa"></a>
     </figure>
     <h1>Pet&Health</h1>
     <h5>Cuidando da saúde do seu pet</h5>        

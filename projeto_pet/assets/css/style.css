@@ -174,14 +174,16 @@ main form input{
     box-sizing: border-box;
     border: none;
     background-color: transparent;
-    border-bottom: .5em solid var(--principal);
+    border-bottom: .8vh solid var(--principal);
     width: 90vw;
     height: 4rem;
     margin-bottom: 2vh;
+    font-size: 2rem;
 }
 main form input::placeholder{
     font-size: 2rem;
     color: var(--logo);
+    opacity: .5;
 }
 main form input[type='submit']{
     background-color: var(--principal);
