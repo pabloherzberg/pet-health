@@ -3,7 +3,7 @@ include_once('includes/componentes/cabecalho.php');
 include_once('includes/logica/conecta.php');
 ?>
   <link rel="stylesheet" href="assets/css/index.css">
-  <script src="assets/js/jquery/addPet.js"></script>
+  <script src="assets/js/addPet.js"></script>
     <title>Pet</title>
 </head>
 <body>
