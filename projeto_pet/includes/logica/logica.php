@@ -131,7 +131,7 @@
         $observacoes = $_POST['observacoes'];
         session_start();
         $email = $_SESSION['email'];
-        inserirHistorico($conexao, $codPet, $nomeMedicamento, $dataHist,  $hora, $pessoa, $observacoes);
+        inserirHistorico($conexao,$dataHist,$observacoes, $pessoa, $codPet, $hora, $nomeMedicamento );
         header('location:../../home.php');
     }
 

@@ -118,30 +118,36 @@
     }
 
    // ------ FUNÇÕES PARA MEDICAMENTOS ------
-    function inserirHistorico($conexao,$codPet, $nomeMedicamento, $dataHist,$hora, $pessoa, $observacoes ){
+    function inserirHistorico($conexao,$dataHist,$observacoes, $pessoa, $codPet, $hora, $nomeMedicamento ){
         $array = array($dataHist, $observacoes,$pessoa,$codPet,$hora);
         $historico = $conexao->prepare("insert into historico (dt_historico, observacoes,flag_veterinario,cod_pet,hora) values (?,?,?,?,?)");
         $query = $historico->execute($array);        
         
         //aqui eu preciso de um jeito de pegar o cod do historico recém criado
-        //add o campo hora na tabela historico, passar ele como argumento e usar isso pra buscar o codgigo do historico
-        /*$histSelecionar = $conexao->();
-        $codHist = $histSelecionar[0];
-        echo $codHist;
-        die;*/
+       $horaHist = $hora;
+        $codigo = buscarCodHist($conexao, $horaHist);
+        $codHist = $codigo[0];
         
         //selecionar o código do medicamento
-       /* $nomeMed = $nomeMedicamento;
+        $nomeMed = $nomeMedicamento;
         $medicamento = buscarMedicamento($conexao,$nomeMed);
         $codMedicamento = $medicamento[0];
         //inserir codigo do medicamento e do historico na tabela medicamento_historico
-        inserirMedHist($conexao,$codMedicamento, $codHist);*/
+        inserirMedHist($conexao,$codMedicamento, $codHist);
 
         return $query;
     }
 
+    function buscarCodHist($conexao, $horaHist){
+        $horas = $conexao->prepare("select cod_historico from historico where hora like '$horaHist'");
+        $horas->execute();
+        $codHist = $horas->fetch();
+
+        return $codHist;
+    }
+
     function inserirMedHist($conexao,$codMedicamento, $codHist){
-        $array = array($medicamento, $codHist);
+        $array = array($codMedicamento, $codHist);
         $medHist = $conexao->prepare("insert into medicamento_historico (cod_medicamento, cod_historico) values (?,?)");
         $query = $medHist->execute($array);
         return $query;

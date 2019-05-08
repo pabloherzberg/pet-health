@@ -30,8 +30,9 @@ function criarFormHist(){
 
     hora.type='hidden';
     hora.name='hora';
-    hora.value= new Date().getTime();
-    
+    hora.value= new Date();
+    console.log(hora.value);
+
     observacao.placeholder='Observações';
     observacao.name='observacoes';
     observacao.type='text';
