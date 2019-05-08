@@ -3,7 +3,7 @@ include_once('includes/componentes/cabecalho.php');
 include_once('includes/logica/conecta.php');
 ?>
   <link rel="stylesheet" href="assets/css/index.css">
-  <script src="assets/js/jquery/historico.js">
+  <script src="assets/js/historico.js">
 
   </script>
     <title>Histórico</title>
@@ -26,7 +26,7 @@ include_once('includes/logica/conecta.php');
     if($tipoUsuario['crmv'] !== NULL){
         $tipo = true;
     }else{
-        $tipo = false;
+        $tipo = 0;
     }
    ?>
 <script>

@@ -4,7 +4,7 @@
         <ul id='listaMenu'>
             <li><a href="addPet.php">Adicionar Pet</a></li>
             <li><a href="addPet.php">Pets</a></li>
-            <li><a href="selecionaHistorico.php">Históricos</a></li>
+            <li><a href="historico.php">Históricos</a></li>
             <li><a href="alterarUsuario.php">Alterar cadastro</a></li>
             <li><a href="calendario.php">Checar calendário</a></li>
             <li><a href="inserirMedicamento.php">Add medicamento</a></li>

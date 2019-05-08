@@ -20,7 +20,7 @@ function criarFormHist(){
     pessoa.type='hidden';
     pessoa.name='flag_veterinario';
     pessoa.value = tipo;
-    
+    console.log(pessoa.value);
     pet.type='hidden';
     pet.name='cod_pet';
     pet.value= codPet;
@@ -31,7 +31,6 @@ function criarFormHist(){
     hora.type='hidden';
     hora.name='hora';
     hora.value= new Date();
-    console.log(hora.value);
 
     observacao.placeholder='Observações';
     observacao.name='observacoes';
