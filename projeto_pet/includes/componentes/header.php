@@ -1,7 +1,13 @@
 <header>
-    <nav>
-        <div id='menu'></div>
-        <ul>
+    <nav id='menu'>
+        <div id='botaoMenu' onclick='expandir()'></div>
+        <ul id='listaMenu'>
+            <li><a href="addPet.php">Adicionar Pet</a></li>
+            <li><a href="addPet.php">Pets</a></li>
+            <li><a href="selecionaHistorico.php">Históricos</a></li>
+            <li><a href="alterarUsuario.php">Alterar cadastro</a></li>
+            <li><a href="calendario.php">Checar calendário</a></li>
+            <li><a href="inserirMedicamento.php">Add medicamento</a></li>
             <li>
                 <button>
                     <form action="includes/logica/logica.php" method="post">

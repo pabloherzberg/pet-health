@@ -9,14 +9,6 @@
 <main>
     <h1>Bem vind@,</h1>
     <p><?php echo($_SESSION['nome']); ?></p>
-    <nav>
-        <a href="addPet.php">Adicionar Pet</a>
-        <a href="addPet.php">Pets</a>
-        <a href="selecionaHistorico.php">Históricos</a>
-        <a href="alterarUsuario.php">Alterar cadastro</a>
-        <a href="calendario.php">Checar calendário</a>
-        <a href="inserirMedicamento.php">Add medicamento</a>
-    </nav>
     
 </main>
 <?php require('includes/componentes/footer.php');?>
