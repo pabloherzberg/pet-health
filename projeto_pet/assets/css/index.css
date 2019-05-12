@@ -4,10 +4,9 @@
     --principal: #c6e3ad;
 }
 main #principal{
-    margin-left:auto !important;
-    margin-right:auto !important;
-    margin-top:50%;
-    margin-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 main section h2{
@@ -30,6 +29,6 @@ main section p{
     background-color: var(--principal);
     background-image: url(/pet-health/projeto_pet/assets/img/index.png);
     background-size: 250%;
-    background-position: 67% 90%;
+    background-position: 67% 51%;
     background-repeat: no-repeat;
 }

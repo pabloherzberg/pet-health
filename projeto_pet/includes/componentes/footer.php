@@ -1,15 +1,24 @@
 <footer id='footer'>
-        <figure id='footerFigure'>
-                <img src="assets/img/pet.png">
-        </figure>
-        <h4>Pet&Health</h4>
-        <a id='contato'>Contato</a>
-        <a id='sobre'>Sobre</a>
-        <figure id='facebook'>
-                <img src="assets/img/facebook.png">
-        </figure>
-        <figure id='instagram'>
-                <img src="assets/img/instagram.png">
-        </figure>
-        <p>® 2019 Pet&Health</p>
+        <nav id='menu'>
+                <ul id='listaMenu'>
+                        <li><a href="addPet.php"><img src="" alt=""><span>Adicionar Pet</span></a></li>
+                        <li><a href="addPet.php">Pets</a></li>
+                        <li><a href="historico.php">Históricos</a></li>
+                        <li><a href="alterarUsuario.php">Alterar cadastro</a></li>
+                        <li><a href="calendario.php">Checar calendário</a></li>
+                        <li><a href="inserirMedicamento.php">Add medicamento</a></li>
+                        <li>
+                                <button>
+                                <form action="includes/logica/logica.php" method="post">
+                                        <input type="submit" name="deslogar" value="Deslogar">
+                                </form>
+                                </button>
+                        </li>
+                        <li>
+                                <button>
+                                <a href="alterarCadastro.php">Alterar Cadastro</a>
+                                </button>
+                        </li>
+                </ul>
+        </nav>
 </footer>
