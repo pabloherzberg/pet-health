@@ -123,7 +123,7 @@
         $historico = $conexao->prepare("insert into historico (dt_historico, observacoes,flag_veterinario,cod_pet,hora) values (?,?,?,?,?)");
         $query = $historico->execute($array);        
         
-        //aqui eu preciso de um jeito de pegar o cod do historico recém criado
+        // pegar o cod do historico recém criado
        $horaHist = $hora;
         $codigo = buscarCodHist($conexao, $horaHist);
         $codHist = $codigo[0];
