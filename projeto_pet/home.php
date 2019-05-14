@@ -11,6 +11,17 @@
         <h1>Bem vind@,</h1>
         <p><?php echo($_SESSION['nome']); ?></p>
     </section>
+    <?php
+        $email = $_SESSION['email'];
+        $pets = listarPets($conexao, $email);
+        foreach($pets as $pet){
+            ?>
+                <section>
+                    <h3><?php echo($pet['nome_pet']);?></h3>
+                </section>
+            <?php
+        }
+    ?>
 </main>
 <?php require('includes/componentes/footer.php');?>
 </body>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('includes/logica/funcoes.php');
+require('includes/logica/conecta.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
