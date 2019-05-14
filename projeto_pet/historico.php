@@ -1,6 +1,7 @@
 <?php
 include_once('includes/componentes/cabecalho.php');
 include_once('includes/logica/conecta.php');
+include_once('includes/logica/funcoes.php');
 ?>
   <link rel="stylesheet" href="assets/css/index.css">
   <script src="assets/js/historico.js">
@@ -20,6 +21,7 @@ include_once('includes/logica/conecta.php');
     $email = $_SESSION['email'];
     $codPet = $_POST['cod_pet'];
     $pet = buscaPet($conexao, $email, $codPet);
+    $idade = idadePet($pet['dt_nascimento']);
     //buscar usuário 
     $tipoUsuario = tipoUsuario($conexao,$email);
     $tipo = $tipoUsuario['crmv'];
@@ -35,9 +37,34 @@ var codPet = "<?php echo $codPet; ?>"
 </script>
 <div>
      <p>Nome: <?php echo $pet['nome_pet']; ?></p>
-     <p>Nascimento: <?php echo $pet['dt_nascimento']; ?></p>
+     <p>Raça: <?php echo $pet['raca']; ?></p>
+     <p>Idade: <?php echo $idade; ?>anos</p>
+     <p>Última consulta: <?php echo $idade; ?></p>
          
 </div>
+    <div id='tabela'>
+        <table>
+        <h1>Medicamentos</h1>
+        <tr>
+        <th>Nome</th>
+        <th>Data aplicação</th>
+        <th>Responsável</th>
+        <th>Reforço</th>
+        </tr>
+        <?php 
+        //PABLO fiz tudo em table pra melhor vizualizar os itens puxados no arrays, mas se tu achar melhor tirar, blz hahahha
+        $medicamentos = buscarHistorico($conexao, $codPet);
+        foreach($medicamentos as $medicamento):
+        ?>
+        <tr>
+        <td><?php echo $medicamento['nome']; ?></td>
+        <td><?php echo $medicamento['dt_historico']; ?></td>
+        <td><?php echo $medicamento['flag_veterinario']; ?></td>
+        <td><?php echo $medicamento['observacoes']; ?></td>
+        </tr>
+        </table>
+        <?php endforeach; ?>
+    </div>
     <button id='botao' class="btn cadastro" onclick='criarFormHist()'>Adicionar Medicamento</button>
     <div id="formulario">
     </div> 

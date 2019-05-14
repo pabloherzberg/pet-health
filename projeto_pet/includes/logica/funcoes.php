@@ -117,7 +117,7 @@
         return $codMedicamento;
     }
 
-   // ------ FUNÇÕES PARA MEDICAMENTOS ------
+   // ------ FUNÇÕES PARA MEDICAMENTOS e HISTORICOS ------
     function inserirHistorico($conexao,$dataHist,$observacoes, $pessoa, $codPet, $hora, $nomeMedicamento ){
         $array = array($dataHist, $observacoes,$pessoa,$codPet,$hora);
         $historico = $conexao->prepare("insert into historico (dt_historico, observacoes,flag_veterinario,cod_pet,hora) values (?,?,?,?,?)");
@@ -151,6 +151,14 @@
         $medHist = $conexao->prepare("insert into medicamento_historico (cod_medicamento, cod_historico) values (?,?)");
         $query = $medHist->execute($array);
         return $query;
+    }
+
+    function buscarHistorico($conexao, $codPet){
+        $dados = $conexao->prepare("select * from historico join medicamento_historico using(cod_historico) left join medicamentos on (medicamentos.cod_medicamento = medicamento_historico.cod_medicamento) where cod_pet = '$codPet'");
+        $dados->execute();
+        $historicos = $dados->fetchAll();
+        
+        return $historicos;
     }
 
 ?>
