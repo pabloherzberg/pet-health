@@ -19,7 +19,8 @@ include_once('includes/logica/conecta.php');
 <form action="includes/logica/logica.php" method="post">
     <input type="hidden" name="cod_pet" value="<?= $pet['cod_pet']?>" />
      <input type="text" name="nome_pet" value="<?= $pet['nome_pet'] ?>">
-     <input type="date" name="dt_nascimento" value="<?=  $pet['dt_nascimento'] ?>">   
+     <input type="date" name="dt_nascimento" value="<?=  $pet['dt_nascimento'] ?>">  
+     <input type="text" name="raca" value="<?=  $pet['raca'] ?>">   
      <input type="submit" name="atualizaPet" value="Atualizar Cadastro Pet"/>  
 </form>
     

@@ -1,10 +1,6 @@
-
 <header>
-        <figure>
-            <img id="logo" src="assets/img/logo.png" alt="logo da empresa">
-        </figure>
-        <form action="includes/logica/logica.php" method="post">
-            <input type="submit" name="deslogar" value="Deslogar">
-        </form>
-        <a href="alterarCadastro.php">Alterar Cadastro</a>
+    <figure>
+        <a href="index.php"><img id="logo" src="assets/img/pet.png" alt="logo da empresa"></a>
+    </figure>
+    <h1>Pet&Health</h1>
 </header>

@@ -1,69 +1,164 @@
 <?php
-    function inserirUsuario($conexao, $array){
+    function inserirUsuario($conexao,$array){
         if(count($array)==6){
-            $query = "insert into usuario(nome, email, senha, endereco, telefone, crmv) values ('$array[0]', '$array[1]', '$array[2]', '$array[3]', '$array[4]', '$array[5]')";
+            $usuarios = $conexao->prepare("insert into usuario(nome, email, senha, endereco, telefone, crmv) values (?, ?, ?, ?, ?, ?)");
+            $query = $usuarios->execute($array);
         }
         else{
-            $query = "insert into usuario(nome, email, senha, endereco, telefone) values ('$array[0]', '$array[1]', '$array[2]', '$array[3]', '$array[4]')";
+            $usuarios = $conexao->prepare("insert into usuario(nome, email, senha, endereco, telefone) values (?, ?, ?, ?, ?)");
+            $query = $usuarios->execute($array);
         }
-        return pg_query($conexao,$query);
+        return $query;
         /*Se o array possuir 6 posições é pq inclui o CRMV, logo o usuário é um VETERINÁRIO*/
     }
 
-    function buscarUsuario($conexao, $email, $senha){
-        $query = "select * from usuario where email ='$email' and senha = '$senha'";
-        $dado_tabular = pg_query($conexao, $query);
-        $array_dados = pg_fetch_array($dado_tabular);
-        return $array_dados;
-    }
-
-    function alterarUsuario($conexao, $usuario){
-        $query = "update usuario set nome = '{$usuario['nome']}', endereco = '{$usuario['endereco']}', telefone = '{$usuario['telefone']}' where email = '{$usuario['email']}'";
-        return pg_query($conexao, $query);
-    }
-    
-
-    // ------ FUNÇÕES PARA PETS --------
-    function listarPets($conexao, $email){
-        $pets = array();
-        $query = "select * from pet where email_dono ='$email'";
-        $resultado = pg_query($conexao, $query);
-        while($pet = pg_fetch_assoc($resultado)){
-            array_push($pets, $pet);            
+    function buscarUsuario($conexao,$email, $senha){
+        $array = array($email, $senha);
+        $usuarios = $conexao->prepare("select * from usuario where email= ? and senha= ? ");
+        if($usuarios->execute($array)){
+            $usuario = $usuarios->fetch(); //coloca os dados num array $usuario
+            return $usuario;
         }
-        return $pets;
+        else{
+            return false;
+        }
     }
 
-    function inserirPet($conexao, $nome_pet, $dt_nascimento, $email_dono){
-        $query = "insert into pet (nome_pet, dt_nascimento, email_dono) values ('$nome_pet', '$dt_nascimento', '$email_dono')";
-        return pg_query($conexao, $query);
+    function tipoUsuario($conexao,$email){
+        $array = array($email);
+        $tipos = $conexao->prepare("select crmv from usuario where email= ? ");
+        $tipos->execute($array);
+        $tipo = $tipos->fetch(); 
+        return $tipo;
+    }
+
+    function alterarUsuario($conexao, $array, $email){
+        $usuarios = $conexao->prepare("update usuario set nome= ?, senha= ?, endereco= ?, telefone= ? where email = '$email'");
+        $query = $usuarios->execute($array);
+        
+        return $query;
+    }
+    function deletarUsuario($conexao, $email){
+        $deletar = $conexao->prepare("delete from usuario where email = '$email'");
+        $query = $deletar->execute();
+        return $query;
+    }
+// ------ FUNÇÕES PARA PETS --------
+    function listarPets($conexao, $email){    
+        $dados_pets = $conexao->prepare("SELECT * FROM pet WHERE email_dono = '$email'");      
+        $dados_pets->execute();
+        $query = $dados_pets->fetchAll();
+        return $query;
+    }
+    function inserirPet($conexao, $array){
+        $pet = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, raca, email_dono) values (?,?,?,?)");
+        $query = $pet->execute($array);
+        return $query;
     }
 
     function removerPet($conexao, $codPet){
-        $query = "delete from pet where cod_pet = '$codPet'";
-        $resultado = pg_query($conexao, $query);
-        return $resultado;
+        $deletar = $conexao->prepare("delete from pet where cod_pet = '$codPet'");
+        $query = $deletar->execute();
+        return $query;
     }
 
-    function atualizarPet($conexao, $codPet, $nomePet, $nasc){
-        $query = "update pet set nome_pet = '{$nomePet}', dt_nascimento = '{$nasc}' where cod_pet = '{$codPet}'";
-        $resultado = pg_query($conexao, $query);
-        return $resultado;
+    function atualizarPet($conexao, $array){
+        $usuarios = $conexao->prepare("update pet set nome_pet = ?, dt_nascimento = ?, raca = ? where cod_pet = ?");
+        $query = $usuarios->execute($array);
+        return $query;
     }
 
     function buscaPet($conexao, $email, $codPet){
-        $pet = array();
-        $query = "select * from pet where email_dono ='$email' and cod_pet= $codPet";
-        $resultado = pg_query($conexao, $query);
-        $pet = pg_fetch_array($resultado);
-        return $pet;
+        $array = array($email, $codPet);
+        $pets = $conexao->prepare("select * from pet where email_dono = ? and cod_pet= ?");
+        if($pets->execute($array)){
+            $pet = $pets->fetch();
+            return $pet;
+        }
+        else{
+            return false;
+        }
     }
+
+     function idadePet($dt_nasc){
+        $now= new DateTime();
+        $idade = $now->diff(new DateTime($dt_nasc));
+       
+        return $idade->y;
+     }
+
 
      // ------ FUNÇÕES PARA MEDICAMENTOS ------
 
      function inserirMedicamento($conexao, $nomeMedicamento, $dt_validade){
-        $query = "insert into medicamentos  (nome, validade) values ('$nomeMedicamento', '$dt_validade')";
-        return pg_query($conexao, $query);
+        $array = array($nomeMedicamento, $dt_validade);
+        $medicamento = $conexao->prepare("insert into medicamentos (nome, validade) values (?,?)");
+        $query = $medicamento->execute($array);
+        return $query;
     }
-     
+
+    function removerMedicamento($conexao, $cod){
+        $query = $conexao->prepare("delete from medicamentos where = '$cod'");
+        return $query->execute();
+    }
+
+    function listarMedicamentos($conexao){
+        $medicamentos = $conexao->prepare("SELECT * FROM medicamentos");      
+        $medicamentos->execute();
+        $query = $medicamentos->fetchAll();
+        return $query;
+    }
+    
+    function buscarMedicamento($conexao, $nomeMed){
+        $medicamentos = $conexao->prepare("select cod_medicamento from medicamentos where lower(nome) like lower('%$nomeMed%')");
+        $medicamentos->execute();
+        $codMedicamento = $medicamentos->fetch();
+
+        return $codMedicamento;
+    }
+
+   // ------ FUNÇÕES PARA MEDICAMENTOS e HISTORICOS ------
+    function inserirHistorico($conexao,$dataHist,$observacoes, $pessoa, $codPet, $hora, $nomeMedicamento ){
+        $array = array($dataHist, $observacoes,$pessoa,$codPet,$hora);
+        $historico = $conexao->prepare("insert into historico (dt_historico, observacoes,flag_veterinario,cod_pet,hora) values (?,?,?,?,?)");
+        $query = $historico->execute($array);        
+        
+        // pegar o cod do historico recém criado
+       $horaHist = $hora;
+        $codigo = buscarCodHist($conexao, $horaHist);
+        $codHist = $codigo[0];
+        
+        //selecionar o código do medicamento
+        $nomeMed = $nomeMedicamento;
+        $medicamento = buscarMedicamento($conexao,$nomeMed);
+        $codMedicamento = $medicamento[0];
+        //inserir codigo do medicamento e do historico na tabela medicamento_historico
+        inserirMedHist($conexao,$codMedicamento, $codHist);
+
+        return $query;
+    }
+
+    function buscarCodHist($conexao, $horaHist){
+        $horas = $conexao->prepare("select cod_historico from historico where hora like '$horaHist'");
+        $horas->execute();
+        $codHist = $horas->fetch();
+
+        return $codHist;
+    }
+
+    function inserirMedHist($conexao,$codMedicamento, $codHist){
+        $array = array($codMedicamento, $codHist);
+        $medHist = $conexao->prepare("insert into medicamento_historico (cod_medicamento, cod_historico) values (?,?)");
+        $query = $medHist->execute($array);
+        return $query;
+    }
+
+    function buscarHistorico($conexao, $codPet){
+        $dados = $conexao->prepare("select * from historico join medicamento_historico using(cod_historico) left join medicamentos on (medicamentos.cod_medicamento = medicamento_historico.cod_medicamento) where cod_pet = '$codPet'");
+        $dados->execute();
+        $historicos = $dados->fetchAll();
+        
+        return $historicos;
+    }
+
 ?>
