@@ -16,7 +16,10 @@
          <?php
             
             $pets = listarPets($conexao, $email);
-
+            if($pets == NULL){
+                header("Location: buscarPet.php");
+            }else{
+          
                 foreach($pets as $pet):
                 
         ?>
@@ -34,7 +37,7 @@
         </div>
         <?php
             endforeach;
-
+        }
         ?>      
         </div>
     </main>
