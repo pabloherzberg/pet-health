@@ -18,18 +18,33 @@ include_once('includes/logica/funcoes.php');
 <a href="home.php">Home</a>
 </nav>
 <?php
-    $email = $_SESSION['email'];
+    $emailSession = $_SESSION['email'];
+    // teste para quem está medicando: veterinário ou dono do animal 
+    if(isset($_POST['email_dono'])){
+        if($_POST['email_dono'] == $emailSession){
+            $email = $emailSession;
+        }
+        else{
+            $email = $_POST['email_dono'];
+        }
+    }else{
+        $email = $emailSession;
+    }
+
     $codPet = $_POST['cod_pet'];
     $pet = buscaPet($conexao, $email, $codPet);
+
     $idade = idadePet($pet['dt_nascimento']);
     $ultimaConsulta = buscarHistoricoRecente($conexao,$codPet);
     $ultima = $ultimaConsulta[0];
     
-    //buscar usuário 
-    $tipoUsuario = tipoUsuario($conexao,$email);
+    //buscar tipo de usuário que está medicando o pet
+    $emailMedica = $emailSession; 
+    
+    $tipoUsuario = tipoUsuario($conexao,$emailMedica);
     $tipo = $tipoUsuario['crmv'];
     if($tipoUsuario['crmv'] !== NULL){
-        $tipo = true;
+        $tipo = 1;
     }else{
         $tipo = 0;
     }
@@ -62,7 +77,13 @@ var codPet = "<?php echo $codPet; ?>"
         <tr>
         <td><?php echo $medicamento['nome']; ?></td>
         <td><?php echo $medicamento['dt_historico']; ?></td>
-        <td><?php echo $medicamento['flag_veterinario']; ?></td>
+        <td><?php 
+            if($medicamento['flag_veterinario'] === true){
+                echo "V";
+            }
+            else{
+                echo "D";
+            }; ?></td>
         <td><?php echo $medicamento['observacoes']; ?></td>
         </tr>
         </table>

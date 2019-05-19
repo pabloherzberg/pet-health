@@ -24,8 +24,8 @@
         }
     }
 
-    function tipoUsuario($conexao,$email){
-        $array = array($email);
+    function tipoUsuario($conexao,$emailMedica){
+        $array = array($emailMedica);
         $tipos = $conexao->prepare("select crmv from usuario where email= ? ");
         $tipos->execute($array);
         $tipo = $tipos->fetch(); 
