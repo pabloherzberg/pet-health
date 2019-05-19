@@ -22,6 +22,9 @@ include_once('includes/logica/funcoes.php');
     $codPet = $_POST['cod_pet'];
     $pet = buscaPet($conexao, $email, $codPet);
     $idade = idadePet($pet['dt_nascimento']);
+    $ultimaConsulta = buscarHistoricoRecente($conexao,$codPet);
+    $ultima = $ultimaConsulta[0];
+    
     //buscar usuário 
     $tipoUsuario = tipoUsuario($conexao,$email);
     $tipo = $tipoUsuario['crmv'];
@@ -39,7 +42,7 @@ var codPet = "<?php echo $codPet; ?>"
      <p>Nome: <?php echo $pet['nome_pet']; ?></p>
      <p>Raça: <?php echo $pet['raca']; ?></p>
      <p>Idade: <?php echo $idade; ?>anos</p>
-     <p>Última consulta: <?php echo $idade; ?></p>
+     <p>Última consulta: <?php echo $ultima; ?></p>
          
 </div>
     <div id='tabela'>

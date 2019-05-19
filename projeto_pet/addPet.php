@@ -37,6 +37,10 @@ include_once('includes/logica/conecta.php');
     <form action="historico.php" method="post">
         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
         <input type="submit" class="btn cadastro" name="verHistorico" value="Visualizar histórico"/>
+    </form> 
+    <form action="historico.php" method="post">
+        <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
+        <input type="submit" class="btn cadastro" name="verHistorico" value="Transferir histórico"/>
     </form>    
     <form action="alteraPet.php" method="post">
         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
@@ -46,6 +50,10 @@ include_once('includes/logica/conecta.php');
         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
         <input type="submit" class="btn cadastro" name="removerPet" value="Remover Pet"/>
     </form>
+    
+    <button id='botaoTrans' class="btn cadastro" onclick='criarFormTransferencia()'>Transferir histórico</button>
+    <div id="trans">     
+    </div>
 </div>
 <?php
     endforeach;

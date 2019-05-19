@@ -16,7 +16,7 @@
                         </li>
                         <li>
                                 <button>
-                                <a href="alterarCadastro.php">Alterar Cadastro</a>
+                                <a href="buscarPet.php">Buscar Pet</a>
                                 </button>
                         </li>
                 </ul>

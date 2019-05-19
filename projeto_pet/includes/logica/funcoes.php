@@ -161,4 +161,12 @@
         return $historicos;
     }
 
+    function buscarHistoricoRecente($conexao, $codPet){
+        $dado = $conexao->prepare("select to_char(max(dt_historico), 'dd-mm-yyyy') from historico where cod_pet= '$codPet' and flag_veterinario = true");
+        $dado->execute();
+        $histRecente = $dado->fetch();
+    
+        return $histRecente;
+    }
+
 ?>

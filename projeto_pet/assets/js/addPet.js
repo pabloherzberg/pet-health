@@ -24,3 +24,37 @@ function criarFormPet(){
     botao.className='hide';
   
   }
+
+  function criarFormTransferencia(){
+    const div = document.getElementById("trans");
+    const botao = document.getElementById("botaoTrans");
+    const formulario = document.createElement("FORM");
+    const email = document.createElement("INPUT");
+    const select = document.createElement("SELECT");
+    const op1 = document.createElement("option");
+    const op2 = document.createElement("option");
+    //falta os dados do pet pra passar hidden
+    const submit = document.createElement("SUBMIT");
+
+    formulario.method = 'post';
+    formulario.action = 'includes/logica/logica.php';
+
+    email.name = 'email';
+    email.placeholder = 'email adotante/cuidador';
+    email.value = 'email'//pegar o email do adotante/cuidador
+
+    select.text = 'Tipo de doação';
+    
+
+    op1.name = 'doacao';
+    op1.text = 'Permanente';
+    op1.value = 'p';
+
+    op2.name = 'temporaria';
+    op2.text = 'Temporária';
+    op2.value = 't';
+
+    div.appendChild(form).append(email,op1,op2, submit);
+    botao.className='hide';
+
+  }

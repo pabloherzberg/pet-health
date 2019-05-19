@@ -136,8 +136,15 @@
         header('location:../../home.php');
     }
 
-#REMOVER HISTÓRICO
 #ALTERAR HISTÓRICO
+
 #BUSCAR HISTÓRICO
+    if(isset($_POST['buscarPet'])){
+        $emailDono = $_POST['email'];
+        session_start();
+        $email = $_SESSION['email'];
+        function listarPets($conexao, $email);
+        header('location: ../../home.php');
+    }
 
 ?>
