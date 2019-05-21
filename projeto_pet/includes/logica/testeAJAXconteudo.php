@@ -1,10 +1,10 @@
 <?php
  session_start();
  if(isset($_SESSION['email'])){
-    echo"0";
+    echo true;
  }
  else{
-    echo"1";
+    echo false;
  }
 
  ?>

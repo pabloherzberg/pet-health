@@ -11,4 +11,5 @@ require('includes/logica/conecta.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.ico">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="assets/js/menu.js"></script>
