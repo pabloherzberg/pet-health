@@ -92,7 +92,10 @@ var codPet = "<?php echo $codPet; ?>"
     <button id='botao' class="btn cadastro" onclick='criarFormHist()'>Adicionar Medicamento</button>
     <div id="formulario">
     </div> 
-
+    <button id='botaoTrans' class="btn cadastro" onclick='criarFormTrans()'>Transferir Pet</button>
+    <div id="formTransferencia">
+    
+    </div>
             
 </main>
 <?php require('includes/componentes/footer.php');?>

@@ -5,6 +5,7 @@
                         <li><a href="addPet.php">Pets</a></li>
                         <li><a href="alterarUsuario.php">Alterar cadastro</a></li>
                         <li><a href="calendario.php">Checar calendário</a></li>
+                        <li><a href="historico.php">Transferir Pet</a></li>
                         <li>
                                 <button>
                                 <form action="includes/logica/logica.php" method="post">
