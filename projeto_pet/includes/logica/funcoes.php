@@ -169,4 +169,36 @@
         return $histRecente;
     }
 
+    function transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao, $tipoDoacao, $emailDono){
+        $verificaEmail = $conexao->prepare("select email from usuario where email = '$emailReceptor'");
+        if($verificaEmail->execute() === true){
+            if($tipoDoacao === 'T'){
+                //inserir a doação na tabela Doacao
+                $array = array($emailDono,$emailReceptor, $dataDoacao, $codPet, $tipoDoacao);
+                $inserirDoacao = $conexao->prepare("insert into doacao (email_dono, email_receptor, data_doacao,cod_pet, tipo_doacao) values (?,?,?,?,?)");
+                $inserirDoacao->execute($array);
+            }else{
+                //selecionar o animal na tabela Pet
+                $pet = $conexao->prepare("select cod_pet, nome_pet, dt_nascimento,raca from pet where cod_pet = '$codPet'");
+                $pet->execute();
+                $arrayPet = $pet->fetch();
+               
+                //ARRUMAR A PARTIR DAQUI -----------!!!!!!!!!!!!!!!!
+                //inserir na tabela Pet com novo dono
+                $novoDono = $conexao->prepare("insert into pet (cod_pet, nome_pet, dt_nascimento, email_dono, raca) values (?,?,?,'$emailReceptor',?)");
+                $novoDono->execute($arrayPet);
+                var_dump($novoDono);
+                die;
+                
+                //remover pet do antigo dono
+                
+                //inserir a doação na tabela Doacao
+                $array = array($emailDono,$emailReceptor, $dataDoacao, $codPet, $tipoDoacao);
+                $inserirDoacao = $conexao->prepare("insert into doacao (email_dono, email_receptor, data_doacao,cod_pet, tipo_doacao) values (?,?,?,?,?)");
+                $inserirDoacao->execute($array);
+            }
+        }else{
+            return "Usuário não cadastrado";
+        }
+    }
 ?>

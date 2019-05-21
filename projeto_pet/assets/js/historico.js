@@ -59,6 +59,7 @@ function criarFormHist(){
     form.action="includes/logica/logica.php";
     form.method="post";
 
+    tipoDoacao.name = 'tipoDoacao';
     tipoDoacao.options[0] = new Option('Permanente', 'P');
     tipoDoacao.options[1] = new Option('Temporária', 'T');
 
