@@ -179,19 +179,21 @@
                 $inserirDoacao->execute($array);
             }else{
                 //selecionar o animal na tabela Pet
-                $pet = $conexao->prepare("select cod_pet, nome_pet, dt_nascimento,raca from pet where cod_pet = '$codPet'");
+                $pet = $conexao->prepare("select * from pet where cod_pet = '$codPet'");
                 $pet->execute();
                 $arrayPet = $pet->fetch();
-               
-                //ARRUMAR A PARTIR DAQUI -----------!!!!!!!!!!!!!!!!
+
                 //inserir na tabela Pet com novo dono
-                $novoDono = $conexao->prepare("insert into pet (cod_pet, nome_pet, dt_nascimento, email_dono, raca) values (?,?,?,'$emailReceptor',?)");
-                $novoDono->execute($arrayPet);
-                var_dump($novoDono);
-                die;
-                
+                $arrayPet['email_dono'] = $emailReceptor; 
+                $novoArray = array($arrayPet['nome_pet'], $arrayPet['dt_nascimento'],$arrayPet['email_dono'], $arrayPet['raca']);                           
+                $novoDono = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, email_dono, raca) values (?,?,?,?)");
+                $novoDono->execute($novoArray);                
                 //remover pet do antigo dono
-                
+                $query = $conexao->prepare("delete from pet where cod_pet = '$codPet' and email_dono = '$emailDono'");
+                return $query->execute();
+                die;
+
+                //ARRUMAR A PARTIR DAQUI -----------!!!!!!!!!!!!!!!!
                 //inserir a doação na tabela Doacao
                 $array = array($emailDono,$emailReceptor, $dataDoacao, $codPet, $tipoDoacao);
                 $inserirDoacao = $conexao->prepare("insert into doacao (email_dono, email_receptor, data_doacao,cod_pet, tipo_doacao) values (?,?,?,?,?)");

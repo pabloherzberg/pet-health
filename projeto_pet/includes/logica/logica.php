@@ -156,6 +156,6 @@
         $emailDono = $_SESSION['email'];
         
         transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao, $tipoDoacao, $emailDono);
-        header('location: ../../listaPetsBusca');
+        header('location: ../../listaPetsBusca.php');
     }
 ?>
