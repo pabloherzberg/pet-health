@@ -1,16 +1,12 @@
 <?php
  include_once('includes/componentes/cabecalho.php');
 ?>
-    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/listarPets.css">
     <title>Pet&Health</title>
 </head>
 <body>
 <?php require('includes/componentes/header.php') ?>
 <main>
-    <section>
-        <h2>Bem vind@,</h2>
-        <p><?php echo($_SESSION['nome']); ?></p>
-    </section>
     <?php
         $email = $_SESSION['email'];
         $pets = listarPets($conexao, $email);
