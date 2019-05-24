@@ -10,6 +10,14 @@
     <?php
         $email = $_SESSION['email'];
         $pets = listarPets($conexao, $email);
+        if(empty($pets)){
+            ?>
+                <section>
+                    <p>Você não possui nenhum bichinho ='(</p>
+                    <p>Você sabia que pode adotar um animalzinho de outra pessoa por um tempo determinado? Clique aqui e sabia mais! =D</p>
+                </section>
+            <?php
+        }
         foreach($pets as $pet){
             ?>
                 <section>
