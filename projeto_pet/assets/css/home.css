@@ -2,6 +2,7 @@
     --logo: #292929;
     --background: #a5c8fc;
     --principal: #a5c8fc;
+    --menu:#ee7d05;
 }
 body{
     background-image:url(null);
@@ -40,6 +41,13 @@ main section p{
     background-size: 250%;
     background-position: 67% 51%;
     background-repeat: no-repeat;
+}
+footer nav ul li{
+    background-color:var(--menu);
+    opacity: 1;
+    border: var(--background) solid 1px;
+    color: var(--preto);
+    margin-right: 1.5vw;
 }
 @keyframes flutua{
     0%{
