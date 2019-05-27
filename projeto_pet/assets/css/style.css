@@ -4,6 +4,7 @@
     --preto: #292929;
     --background: #e8e8e8;
     --principal: #c6e3ad;
+    --menu:white;
     --fonte-tamanho: 1rem;
 }
 /*resets*/
@@ -183,7 +184,7 @@ nav ul li{
     height: 15vh;
     min-width: 17vh;
     border-radius: 10px;
-    background-color:white;
+    background-color:var(--menu);
     opacity: .2;
     border: var(--preto) solid 1px;
     display: flex;
@@ -191,12 +192,22 @@ nav ul li{
     justify-content:space-between;
     color: var(--preto);
 }
-nav ul li button{
+nav ul li a{
+    width: 100%;
+    height: 100%;
+}
+nav ul li form{
+    width: 100%;
+    height: 100%;
+}
+nav ul li input[type=submit]{
     background-color: transparent;
     color: var(--preto);
     border: none;
     font-size: var(--fonte-tamanho);
     text-decoration: underline;
+    width: 100%;
+    height: 100%;
 }
 /*classes*/
 .ul_clicou{

@@ -14,11 +14,11 @@ $.ajax({
     url: "includes/logica/testeAJAXtipoUsuario.php",
     dataType: "html",
     success: function (veterinario) {
-        if(veterinario == true){
-            vetMenu();
+        if(veterinario == false){
+            donoMenu();
         }
         else{
-            donoMenu();
+            vetMenu();
         }
     }
 });
