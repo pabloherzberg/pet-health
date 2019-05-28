@@ -6,16 +6,17 @@
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+        $senhaEncriptada = base64_encode($senha);
         $endereco = $_POST['endereco'];
         $telefone = $_POST['telefone'];
         if(isset($_POST['crmv'])){
             /*Condição para quando for selecionado o botão veterinário*/            
             $crmv = $_POST['crmv'];
-            $array = array($nome, $email, $senha, $endereco, $telefone, $crmv);
+            $array = array($nome, $email, $senhaEncriptada, $endereco, $telefone, $crmv);
         }
         else{
             /*Condição para quando for selecionado o botão dono pet */
-            $array = array($nome, $email, $senha, $endereco, $telefone);
+            $array = array($nome, $email, $senhaEncriptada, $endereco, $telefone);
         }
         inserirUsuario($conexao, $array);
         header('location:../../index.php');
@@ -24,8 +25,9 @@
     if(isset($_POST['logar'])){
         $email = addslashes($_POST['email']);//impede que o sql seja alterado
         $senha = $_POST['senha'];
+        $senhaEncriptada = base64_encode($senha);
         session_start();
-        $_SESSION = buscarUsuario($conexao,$email,$senha);
+        $_SESSION = buscarUsuario($conexao,$email,$senhaEncriptada);
         if($_SESSION){
             header('location:../../home.php');
         }
