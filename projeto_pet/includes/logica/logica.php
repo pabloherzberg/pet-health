@@ -43,7 +43,7 @@
         }
         else{
             $nome = $_POST['nome'];
-        };
+        }
         $email = $_SESSION['email'];
         if(empty($_POST['senha'])){
             $senha = $_SESSION['senha'];
@@ -83,6 +83,11 @@
         session_destroy();          //destruir a sessão
         session_unset();            //limpar as variáveis globais da sessão
         header('Location:../../index.php');
+    }
+#RECUPERAR SENHA
+    if(isset($_POST['recuperarSenha'])){
+        $email = $_POST['email'];
+        recuperarSenha($conexao, $email);
     }
 #INSERIR PET
     if(isset($_POST['inserirPet'])){
