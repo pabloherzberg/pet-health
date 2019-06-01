@@ -1,7 +1,8 @@
+
 function criarFormHist(){
     
     const div = document.getElementById('formulario');
-    const botao = document.getElementById('botao');
+    const botao = document.getElementById('botaoHist');
     const form = document.createElement('FORM');
     const nomeMedicamento = document.createElement('INPUT');
     const pessoa = document.createElement('INPUT');

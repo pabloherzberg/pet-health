@@ -12,7 +12,7 @@
         if(isset($email)){
             ?>
                 <section>
-                    <h2>bem vindo, <?php echo($_SESSION['nome']);?></h2>
+                    <h2>Bem Vindo, <?php echo($_SESSION['nome']);?></h2>
                 </section>
             <?php
         }
