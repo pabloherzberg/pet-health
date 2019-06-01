@@ -6,16 +6,17 @@
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+        $senhaEncriptada = base64_encode($senha);
         $endereco = $_POST['endereco'];
         $telefone = $_POST['telefone'];
         if(isset($_POST['crmv'])){
             /*Condição para quando for selecionado o botão veterinário*/            
             $crmv = $_POST['crmv'];
-            $array = array($nome, $email, $senha, $endereco, $telefone, $crmv);
+            $array = array($nome, $email, $senhaEncriptada, $endereco, $telefone, $crmv);
         }
         else{
             /*Condição para quando for selecionado o botão dono pet */
-            $array = array($nome, $email, $senha, $endereco, $telefone);
+            $array = array($nome, $email, $senhaEncriptada, $endereco, $telefone);
         }
         inserirUsuario($conexao, $array);
         header('location:../../index.php');
@@ -24,8 +25,9 @@
     if(isset($_POST['logar'])){
         $email = addslashes($_POST['email']);//impede que o sql seja alterado
         $senha = $_POST['senha'];
+        $senhaEncriptada = base64_encode($senha);
         session_start();
-        $_SESSION = buscarUsuario($conexao,$email,$senha);
+        $_SESSION = buscarUsuario($conexao,$email,$senhaEncriptada);
         if($_SESSION){
             header('location:../../home.php');
         }
@@ -41,13 +43,14 @@
         }
         else{
             $nome = $_POST['nome'];
-        };
+        }
         $email = $_SESSION['email'];
         if(empty($_POST['senha'])){
             $senha = $_SESSION['senha'];
         }
         else{
-            $senha = $_POST['senha'];
+            $senha_fraca = $_POST['senha'];
+            $senha = base64_encode($senha_fraca);
         };
         if(empty($_POST['endereco'])){
             $endereco = $_SESSION['endereco'];
@@ -81,6 +84,26 @@
         session_destroy();          //destruir a sessão
         session_unset();            //limpar as variáveis globais da sessão
         header('Location:../../index.php');
+    }
+#RECUPERAR SENHA
+    if(isset($_POST['recuperarSenha'])){
+        $email = $_POST['email'];
+        recuperarSenha($conexao, $email);
+    }
+#ALTERAR SENHA
+    if(isset($_POST['alterarSenha'])){
+        $senha_fraca = $_POST['senha'];
+        $senha = base64_encode($senha_fraca);
+        $email = $_POST['email'];
+        $array = array($senha,$senha_fraca,$email);
+        echo("<pre>");
+        var_dump($array);
+        alterarSenha($conexao, $email, $senha);
+        session_start();
+        $_SESSION = buscarUsuario($conexao,$email,$senha);
+        if(isset($_SESSION)){
+            header('Location:../../index.php');
+        }
     }
 #INSERIR PET
     if(isset($_POST['inserirPet'])){

@@ -3,7 +3,7 @@ include_once('includes/componentes/cabecalho.php');
 include_once('includes/logica/conecta.php');
 include_once('includes/logica/funcoes.php');
 ?>
-  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/historico.css">
   <script src="assets/js/historico.js">
 
   </script>
@@ -14,9 +14,6 @@ include_once('includes/logica/funcoes.php');
     include_once("includes/componentes/header.php");
 ?>
 <main>
-<nav>
-<a href="home.php">Home</a>
-</nav>
 <?php
     $emailSession = $_SESSION['email'];
     // teste para quem está medicando: veterinário ou dono do animal 
@@ -50,8 +47,8 @@ include_once('includes/logica/funcoes.php');
     }
    ?>
 <script>
-var tipo = "<?php echo $tipo; ?>";
-var codPet = "<?php echo $codPet; ?>"
+let tipo = "<?php echo $tipo; ?>";
+let codPet = "<?php echo $codPet; ?>"
 </script>
 <div>
      <p>Nome: <?php echo $pet['nome_pet']; ?></p>

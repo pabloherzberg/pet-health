@@ -36,7 +36,6 @@ function cadastrar(){
     const root = document.documentElement;
     const body = document.body;
     const section = document.getElementsByClassName('texto');
-
     dono.innerText='Dono';
     vet.innerText='Veterinário';
     logar.parentNode.removeChild(logar);
@@ -50,7 +49,9 @@ function cadastrar(){
     footer.style.backgroundImage = "url(/pet-health/projeto_pet/assets/img/cadastro_selecionar.png)"
     footer.style.backgroundPosition = "48% 137%";
     dono.addEventListener('click',formDono);
+    dono.addEventListener('click',validar);
     vet.addEventListener('click',formVet);
+    vet.addEventListener('click',validar);
 
     function formDono(){
         const formulario = document.createElement('FORM');
@@ -85,7 +86,8 @@ function cadastrar(){
         formulario.action='includes/logica/logica.php';
         div.appendChild(formulario).append(nome,email,senha,endereco,telefone,submit);
         footer.style.backgroundImage = "url(/pet-health/projeto_pet/assets/img/cadastro.png)";
-        footer.style.backgroundPosition = "50% 85%";
+        footer.style.backgroundPosition = "50% 58%";
+        footer.style.backgroundSize='150%';
         root.style.setProperty('--background', '#d5f0f1');
         root.style.setProperty('--principal','#6ebcbf');
     }
@@ -100,6 +102,8 @@ function cadastrar(){
         const telefone = document.createElement('INPUT');
         const crmv = document.createElement('INPUT');
         const submit = document.createElement('INPUT');
+        const inicioExp = document.createElement('input');
+        const fimExp = document.createElement('input');
 
         nome.name='nome';
         nome.placeholder='nome';
@@ -122,9 +126,13 @@ function cadastrar(){
         submit.name='cadastrar';
         submit.value='cadastrar';
         submit.type='submit';
+        inicioExp.name='inicio_expediente';
+        inicioExp.placeholder='inicio do expediente HH:MM';
+        fimExp.name='fim_expediente';
+        fimExp.placeholder='fim do expediente HH:MM';
         formulario.method='post';
         formulario.action='includes/logica/logica.php';
-        div.appendChild(formulario).append(nome,email,senha,endereco,telefone,crmv,submit);
+        div.appendChild(formulario).append(nome,email,senha,endereco,telefone,crmv,inicioExp, fimExp,submit);
         footer.style.backgroundImage = "url(/pet-health/projeto_pet/assets/img/cadastro_vet.png)";
         footer.style.backgroundPosition = "50% 85%";
         root.style.setProperty('--background', '#cdf9dc');
