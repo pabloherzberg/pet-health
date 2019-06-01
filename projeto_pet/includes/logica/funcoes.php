@@ -109,7 +109,7 @@
 
                 $mail->Subject = "Recuperação de senha";
 
-                $mail->Body = $senha_nova ;
+                $mail->Body = "Para definir uma nova senha <a href='http://localhost/pet-health/projeto_pet/alterarSenha.php?email=$email&senha=$senha_nova'>clique aqui</a>" ;
 
             // Enviando o email
 
@@ -123,6 +123,11 @@
 
                 } 
         }
+    }
+    function alterarSenha($conexao, $email, $senha){
+        $usuario = $conexao->prepare("update usuario set senha='$senha' where email='$email'");
+        $query = $usuario->execute();
+        return $query;
     }
 // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){    

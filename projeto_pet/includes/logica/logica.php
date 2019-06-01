@@ -49,7 +49,8 @@
             $senha = $_SESSION['senha'];
         }
         else{
-            $senha = $_POST['senha'];
+            $senha_fraca = $_POST['senha'];
+            $senha = base64_encode($senha_fraca);
         };
         if(empty($_POST['endereco'])){
             $endereco = $_SESSION['endereco'];
@@ -88,6 +89,21 @@
     if(isset($_POST['recuperarSenha'])){
         $email = $_POST['email'];
         recuperarSenha($conexao, $email);
+    }
+#ALTERAR SENHA
+    if(isset($_POST['alterarSenha'])){
+        $senha_fraca = $_POST['senha'];
+        $senha = base64_encode($senha_fraca);
+        $email = $_POST['email'];
+        $array = array($senha,$senha_fraca,$email);
+        echo("<pre>");
+        var_dump($array);
+        alterarSenha($conexao, $email, $senha);
+        session_start();
+        $_SESSION = buscarUsuario($conexao,$email,$senha);
+        if(isset($_SESSION)){
+            header('Location:../../index.php');
+        }
     }
 #INSERIR PET
     if(isset($_POST['inserirPet'])){
