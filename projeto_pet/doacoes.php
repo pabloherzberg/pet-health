@@ -13,7 +13,7 @@
         if(empty($pets)){
             ?>
                 <section>
-                    <p>Você não possui nenhum bichinho sob os cuidados de outra pessoa</p>
+                    <p>Você não possui um bichinho sob os cuidados de outra pessoa.</p>
                 </section>
             <?php
         }
@@ -21,13 +21,16 @@
            
             ?>
                 <section>
-                    <h2>Nome: <?php echo $pet['nome_pet']; ?></h2>
+                    <p>Nome do Pet: <?php echo $pet['nome_pet']; ?></p>
+                    <p>Email do cuidador: <?php echo $pet['email_receptor']; ?></p>
+                    <p>Telefone do cuidador: <?php //echo $pet['nome_pet']; ?></p>
+                    <p>Início dos cuidados: <?php echo $pet['data_doacao']; ?></p>
+                    <p>Data final dos cuidados: <?php echo $pet['data_devolucao']; ?></p>
                     <form action="historico.php" method="post">
                         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
                         <input type="submit" class="btn cadastro" name="verHistorico" value="Visualizar histórico"/>
                     </form> 
                     
-                    <!-- colocar um if aqui para aparecer esse botão apenas para doações temporárias -->
                     <form action="includes/logica/logica.php" method="post">
                         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
                         <input type="submit" class="btn cadastro" name="removerPetDoacao" value="Remover Doação"/>

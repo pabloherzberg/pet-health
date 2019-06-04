@@ -64,6 +64,9 @@ function criarFormHist(){
     tipoDoacao.options[0] = new Option('Permanente', 'P');
     tipoDoacao.options[1] = new Option('Temporária', 'T');
 
+    //nome ------------> inserir no banco tb 
+    //telefone
+
     emailReceptor.type = 'text';
     emailReceptor.name = 'email_receptor';
     emailReceptor.placeholder = 'email do receptor';

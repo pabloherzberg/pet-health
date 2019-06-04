@@ -282,4 +282,12 @@
             return "Usuário não cadastrado";
         }
     }
+
+    function listarPetsDoados($conexao, $email){
+        $dados_pets = $conexao->prepare("SELECT * FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_dono = '$email' and tipo_doacao = 'T'");      
+        $dados_pets->execute();
+        $query = $dados_pets->fetchAll();
+        
+        return $query;
+    }
 ?>
