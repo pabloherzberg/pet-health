@@ -173,12 +173,12 @@
     if(isset($_POST['transferirHistorico'])){
         $emailReceptor = $_POST['email_receptor'];
         $codPet = $_POST['cod_pet'];
-        $dataDoacao = $_POST['hora'];
+        $dataDoacao = $_POST['data_doacao'];
         $tipoDoacao = $_POST['tipoDoacao'];
         session_start();
         $emailDono = $_SESSION['email'];
         
         transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao, $tipoDoacao, $emailDono);
-        header('location: ../../listaPetsBusca.php');
+        header('location: ../../doacoes.php');
     }
 ?>

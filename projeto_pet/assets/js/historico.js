@@ -33,7 +33,7 @@ function criarFormHist(){
     hora.type='hidden';
     hora.name='hora';
     hora.value= new Date();
-
+    
     observacao.placeholder='Observações';
     observacao.name='observacoes';
     observacao.type='text';
@@ -69,9 +69,9 @@ function criarFormHist(){
     emailReceptor.placeholder = 'email do receptor';
     
     data.type='hidden';
-    data.name='hora';
+    data.name='data_doacao';
     data.value= new Date();
-
+    
     pet.type='hidden';
     pet.name='cod_pet';
     pet.value= codPet;
