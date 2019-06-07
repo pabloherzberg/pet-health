@@ -34,6 +34,14 @@
         }
     }
 
+    function buscaTelefone($conexao,$emailResponsavel){
+        $array = array($emailResponsavel);
+        $telefones = $conexao->prepare("select telefone from usuario where email= ? ");
+        $telefones->execute($array);
+        $telefone = $telefones->fetch(); 
+        return $telefone;
+    }
+
     function tipoUsuario($conexao,$emailMedica){
         $array = array($emailMedica);
         $tipos = $conexao->prepare("select crmv from usuario where email= ? ");
@@ -296,10 +304,19 @@
         
         return $query;
     }
+
     function listarPetsRecebidos($conexao, $email_receptor){
-        $dados_pets = $conexao->prepare("SELECT * FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_receptor= '$email_receptor'");      
+        $dados_pets = $conexao->prepare("SELECT * FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_receptor= '$email_receptor' and tipo_doacao = 'T'");      
         $dados_pets->execute();
         $query = $dados_pets->fetchAll();
+        
+        return $query;
+    }
+
+    function listarVeterinarios($conexao){
+        $vets = $conexao->prepare("SELECT * FROM usuario where crmv is not null");      
+        $vets->execute();
+        $query = $vets->fetchAll();
         
         return $query;
     }
