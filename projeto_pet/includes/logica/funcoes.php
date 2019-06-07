@@ -268,23 +268,11 @@
                 $pet = $conexao->prepare("select * from pet where cod_pet = '$codPet'");
                 $pet->execute();
                 $arrayPet = $pet->fetch();
-                //transferir o historico dele para o novo dono
-                //ver se é possível manter o pet com o mesmo código e mudar apenas o email do dono
-                //inserir na tabela Pet com novo dono
-                $arrayPet['email_dono'] = $emailReceptor; 
-                $novoArray = array($arrayPet['nome_pet'], $arrayPet['dt_nascimento'],$arrayPet['email_dono'], $arrayPet['raca']);                           
-                $novoDono = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, email_dono, raca) values (?,?,?,?)");
-                $novoDono->execute($novoArray);                
                 
-                //ARRUMAR A PARTIR DAQUI -----------!!!!!!!!!!!!!!!!
-                //não deletar o pet do antigo dono: usar uma flag para o animal estar ou não com aquele dono
-                //alterar isso tb na tabela pets
-                //remover pet do antigo dono
-                $query = $conexao->prepare("delete from pet where cod_pet = '$codPet' and email_dono = '$emailDono'");
-                return $query->execute();
-                die;
-
-                
+                //inserir na tabela Pet com novo dono                                                       
+                $novoDono = $conexao->prepare("update pet set email_dono = '$emailReceptor' where cod_pet = '$codPet'");
+                $novoDono->execute();                
+                                
                 //inserir a doação na tabela Doacao
                 $array = array($emailDono,$emailReceptor, $dataDoacao, $codPet, $tipoDoacao);
                 $inserirDoacao = $conexao->prepare("insert into doacao (email_dono, email_receptor, data_doacao,cod_pet, tipo_doacao) values (?,?,?,?,?)");
@@ -293,5 +281,13 @@
         }else{
             return "Usuário não cadastrado";
         }
+    }
+
+    function listarPetsDoados($conexao, $email){
+        $dados_pets = $conexao->prepare("SELECT * FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_dono = '$email' and tipo_doacao = 'T'");      
+        $dados_pets->execute();
+        $query = $dados_pets->fetchAll();
+        
+        return $query;
     }
 ?>

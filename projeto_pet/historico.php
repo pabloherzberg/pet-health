@@ -86,7 +86,7 @@ let codPet = "<?php echo $codPet; ?>"
         </table>
         <?php endforeach; ?>
     </div>
-    <button id='botao' class="btn cadastro" onclick='criarFormHist()'>Adicionar Medicamento</button>
+    <button id='botaoHist' class="btn cadastro" onclick='criarFormHist()'>Adicionar Medicamento</button>
     <div id="formulario">
     </div> 
     <button id='botaoTrans' class="btn cadastro" onclick='criarFormTrans()'>Transferir Pet</button>

@@ -1,7 +1,8 @@
+
 function criarFormHist(){
     
     const div = document.getElementById('formulario');
-    const botao = document.getElementById('botao');
+    const botao = document.getElementById('botaoHist');
     const form = document.createElement('FORM');
     const nomeMedicamento = document.createElement('INPUT');
     const pessoa = document.createElement('INPUT');
@@ -32,7 +33,7 @@ function criarFormHist(){
     hora.type='hidden';
     hora.name='hora';
     hora.value= new Date();
-
+    
     observacao.placeholder='Observações';
     observacao.name='observacoes';
     observacao.type='text';
@@ -63,14 +64,17 @@ function criarFormHist(){
     tipoDoacao.options[0] = new Option('Permanente', 'P');
     tipoDoacao.options[1] = new Option('Temporária', 'T');
 
+    //nome ------------> inserir no banco tb 
+    //telefone
+
     emailReceptor.type = 'text';
     emailReceptor.name = 'email_receptor';
     emailReceptor.placeholder = 'email do receptor';
     
     data.type='hidden';
-    data.name='hora';
+    data.name='data_doacao';
     data.value= new Date();
-
+    
     pet.type='hidden';
     pet.name='cod_pet';
     pet.value= codPet;
