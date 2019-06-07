@@ -37,4 +37,5 @@ function donoMenu(){
     const menu = document.getElementById('menu');
     const list = menu.querySelectorAll('li');
     list[2].style.display='none';
+    list[4].style.display='none';
 }

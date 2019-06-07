@@ -142,7 +142,14 @@
         header('location:../../home.php'); // -------->>> mudar isso para histórico posteriormente
     }
 
-
+#ALTERAR EXPEDIENTE
+    if(isset($_POST['alterarExpediente'])){
+        session_start();
+        $email = $_SESSION['email'];
+        $inicio = $_POST['inicio'];
+        $fim_expediente = $_POST['fim'];
+        alterarExpediente($conexao,$email,$inicio,$fim_expediente);
+    }
 //funções do HISTÓRICO
 #INSERIR MEDICAMENTO NO HISTÓRICO 
     if(isset($_POST['inserirHistorico'])){

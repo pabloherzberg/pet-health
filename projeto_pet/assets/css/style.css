@@ -119,6 +119,8 @@ main{
     clear: both;
     height: 50%;
     overflow-x: scroll;
+    overflow-y: scroll;
+
 }
 main section{
     height: 100%;

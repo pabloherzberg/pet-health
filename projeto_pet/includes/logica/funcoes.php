@@ -129,6 +129,12 @@
         $query = $usuario->execute();
         return $query;
     }
+    function alterarExpediente($conexao,$email,$inicio, $fim){
+        $array = array($inicio, $fim,$email);
+        $expediente = $conexao->prepare("update usuario set inicio_expediente = ?, fim_expediente = ? where email = ?");
+        $novo_expediente = $expediente->execute($array);
+        return $novo_expediente;
+    }
 // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){    
         $dados_pets = $conexao->prepare("SELECT * FROM pet WHERE email_dono = '$email'");      

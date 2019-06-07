@@ -5,6 +5,7 @@
                         <li><a href="listarPets.php">Listar meus pets</a></li>
                         <li><a href="buscarPet.php">Buscar Pet</a></li>
                         <li><a href="alterarUsuario.php">Alterar cadastro</a></li>
+                        <li><a href="alterarExpediente.php">Alterar meu expediente</a></li>
                         <li>                              
                                 <form action="includes/logica/logica.php" method="post">
                                         <input type="submit" name="deslogar" value="Deslogar">
