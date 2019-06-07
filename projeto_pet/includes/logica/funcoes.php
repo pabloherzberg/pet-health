@@ -34,6 +34,14 @@
         }
     }
 
+    function buscaTelefone($conexao,$emailCuidador){
+        $array = array($emailCuidador);
+        $telefones = $conexao->prepare("select telefone from usuario where email= ? ");
+        $telefones->execute($array);
+        $telefone = $telefones->fetch(); 
+        return $telefone;
+    }
+
     function tipoUsuario($conexao,$emailMedica){
         $array = array($emailMedica);
         $tipos = $conexao->prepare("select crmv from usuario where email= ? ");
