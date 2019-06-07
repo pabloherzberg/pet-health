@@ -9,7 +9,7 @@
 <main>
     <?php
         $email = $_SESSION['email'];
-        $pets = listarPetsDoados($conexao, $email);//fazer essa função
+        $pets = listarPetsDoados($conexao, $email);
         if(empty($pets)){
             ?>
                 <section>
@@ -18,8 +18,8 @@
             <?php
         }
         foreach($pets as $pet){
-         $emailCuidador = $pet['email_receptor'];
-         $telefone = buscaTelefone($conexao,$emailCuidador) ;
+         $emailResponsavel = $pet['email_receptor'];
+         $telefone = buscaTelefone($conexao,$emailResponsavel) ;
          
             ?>
                 <section>

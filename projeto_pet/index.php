@@ -22,6 +22,7 @@
     <section id='principal'>
         <button onclick='logar()' id='logar'>Logar</button>
         <button onclick='cadastrar()' id='cadastrar'>Cadastrar</button>
+        <a href="recuperacao.php">Esqueci a senha</a>
         <div id='formulario'></div>
     </section>
 </main>

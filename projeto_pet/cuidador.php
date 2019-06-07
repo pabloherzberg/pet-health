@@ -9,23 +9,23 @@
 <main>
     <?php
         $email = $_SESSION['email'];
-        $pets = listarPetsDoados($conexao, $email);//fazer essa função
+        $pets = listarPetsRecebidos($conexao, $email);
         if(empty($pets)){
             ?>
                 <section>
-                    <p>Você não possui um bichinho sob os cuidados de outra pessoa.</p>
+                    <p>Você não possui um bichinho sob os seus cuidados.</p>
                 </section>
             <?php
         }
         foreach($pets as $pet){
-         $emailCuidador = $pet['email_receptor'];
-         $telefone = buscaTelefone($conexao,$emailCuidador) ;
+         $emailResponsavel = $pet['email_dono'];
+         $telefone = buscaTelefone($conexao,$emailResponsavel) ;
          
             ?>
                 <section>
                     <p>Nome do Pet: <?php echo $pet['nome_pet']; ?></p>
-                    <p>Email do cuidador: <?php echo $pet['email_receptor']; ?></p>
-                    <p>Telefone do cuidador: <?php echo $telefone[0]; ?></p>
+                    <p>Email do dono: <?php echo $pet['email_dono']; ?></p>
+                    <p>Telefone do dono: <?php echo $telefone[0]; ?></p>
                     <p>Início dos cuidados: <?php echo $pet['data_doacao']; ?></p>
                     <p>Data final dos cuidados: <?php echo $pet['data_devolucao']; ?></p>
                     <form action="historico.php" method="post">
