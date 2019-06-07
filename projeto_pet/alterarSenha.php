@@ -2,14 +2,14 @@
     $senha = $_GET['senha'];
     $email = $_GET['email'];
 ?>
-<link rel="stylesheet" href="assets/css/index.css">
-<script src="assets/js/index.js"></script>
+<link rel="stylesheet" href="assets/css/home.css">
+<link rel="stylesheet" href="assets/css/alterarSenha.css">
 <title>Pet&Health</title>
 </head>
 <body>
 <?php require('includes/componentes/header.php') ?>
 <main>
-    <section id='principal'>
+    <section>
         <form action="includes/logica/logica.php" method="post">
             <input type="text" name='senha' placeholder='nova senha'>
             <input type="hidden" name="email" value='<?php echo($email)?>'>

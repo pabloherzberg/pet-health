@@ -1,0 +1,23 @@
+
+@keyframes flutua{
+    0% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 50% 90%;
+    }
+    100% {
+        background-position: 50% 50%;
+    }
+}
+main{
+    height: 80%;
+}
+main section input::placeholder{
+    color: black;
+}
+main section input[type='text']{
+    background-color: white;
+    opacity: .8;
+    
+}

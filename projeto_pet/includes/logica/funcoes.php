@@ -298,4 +298,11 @@
         
         return $query;
     }
+    function listarPetsRecebidos($conexao, $email_receptor){
+        $dados_pets = $conexao->prepare("SELECT * FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_receptor= '$email_receptor'");      
+        $dados_pets->execute();
+        $query = $dados_pets->fetchAll();
+        
+        return $query;
+    }
 ?>
