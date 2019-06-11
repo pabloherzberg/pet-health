@@ -192,4 +192,10 @@
         transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao,$dataDevolucao, $tipoDoacao, $emailDono);
         header('location: ../../doacoes.php');
     }
+#REMOVER TRANSFERÊNCIA DE PET
+    if(isset($_POST['removerPetDoacao'])){
+        $codPet =$_POST['cod_pet'];
+        removerPetDoacao($conexao, $codPet);
+        header("location: ../../doacoes.php");
+    }
 ?>

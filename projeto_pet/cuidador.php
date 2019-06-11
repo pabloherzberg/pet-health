@@ -33,10 +33,6 @@
                         <input type="submit" class="btn cadastro" name="verHistorico" value="Visualizar histórico"/>
                     </form> 
                     
-                    <form action="includes/logica/logica.php" method="post">
-                        <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
-                        <input type="submit" class="btn cadastro" name="removerPetDoacao" value="Remover Doação"/>
-                    </form>
                 </section>
             <?php
         }
