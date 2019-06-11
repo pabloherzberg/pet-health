@@ -52,7 +52,8 @@ function criarFormHist(){
     const botao = document.getElementById('botaoTrans');
     const form = document.createElement('FORM');
     const pet = document.createElement('INPUT');
-    const data = document.createElement('INPUT');
+    const inicioCuidados = document.createElement('INPUT');
+    const fimCuidados = document.createElement('INPUT');
     const emailReceptor = document.createElement('INPUT');
     const tipoDoacao = document.createElement('select');
     const submit = document.createElement('INPUT');
@@ -64,16 +65,15 @@ function criarFormHist(){
     tipoDoacao.options[0] = new Option('Permanente', 'P');
     tipoDoacao.options[1] = new Option('Temporária', 'T');
 
-    //nome ------------> inserir no banco tb 
-    //telefone
-
     emailReceptor.type = 'text';
     emailReceptor.name = 'email_receptor';
     emailReceptor.placeholder = 'email do receptor';
     
-    data.type='hidden';
-    data.name='data_doacao';
-    data.value= new Date();
+    inicioCuidados.type='date';
+    inicioCuidados.name='data_doacao';
+    
+    fimCuidados.type='date';
+    fimCuidados.name='data_devolucao';
     
     pet.type='hidden';
     pet.name='cod_pet';
@@ -83,7 +83,7 @@ function criarFormHist(){
     submit.name='transferirHistorico';
     submit.value='Transferir';
   
-    div.appendChild(form).append(emailReceptor,pet,tipoDoacao, data,submit);
+    div.appendChild(form).append(emailReceptor,pet,tipoDoacao,inicioCuidados, fimCuidados,submit);
     botao.className='hide';
 
   }

@@ -269,13 +269,13 @@
         return $histRecente;
     }
 
-    function transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao, $tipoDoacao, $emailDono){
+    function transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao,$dataDevolucao, $tipoDoacao, $emailDono){
         $verificaEmail = $conexao->prepare("select email from usuario where email = '$emailReceptor'");
         if($verificaEmail->execute() === true){
             if($tipoDoacao === 'T'){
                 //inserir a doação na tabela Doacao
-                $array = array($emailDono,$emailReceptor, $dataDoacao, $codPet, $tipoDoacao);
-                $inserirDoacao = $conexao->prepare("insert into doacao (email_dono, email_receptor, data_doacao,cod_pet, tipo_doacao) values (?,?,?,?,?)");
+                $array = array($emailDono,$emailReceptor, $dataDoacao,$dataDevolucao, $codPet, $tipoDoacao);
+                $inserirDoacao = $conexao->prepare("insert into doacao (email_dono, email_receptor, data_doacao,data_devolucao,cod_pet, tipo_doacao) values (?,?,?,?,?,?)");
                 $inserirDoacao->execute($array);
             }else{
                 //selecionar o animal na tabela Pet

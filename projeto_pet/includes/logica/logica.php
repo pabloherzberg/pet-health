@@ -184,11 +184,12 @@
         $emailReceptor = $_POST['email_receptor'];
         $codPet = $_POST['cod_pet'];
         $dataDoacao = $_POST['data_doacao'];
+        $dataDevolucao = $_POST['data_devolucao'];
         $tipoDoacao = $_POST['tipoDoacao'];
         session_start();
         $emailDono = $_SESSION['email'];
         
-        transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao, $tipoDoacao, $emailDono);
+        transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao,$dataDevolucao, $tipoDoacao, $emailDono);
         header('location: ../../doacoes.php');
     }
 ?>
