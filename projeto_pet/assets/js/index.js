@@ -127,9 +127,11 @@ function cadastrar(){
         submit.value='cadastrar';
         submit.type='submit';
         inicioExp.name='inicio_expediente';
-        inicioExp.placeholder='inicio do expediente HH:MM';
+        inicioExp.type = 'time';
+        inicioExp.placeholder='HH:MM';
         fimExp.name='fim_expediente';
-        fimExp.placeholder='fim do expediente HH:MM';
+        fimExp.type = 'time';
+        fimExp.placeholder='HH:MM';
         formulario.method='post';
         formulario.action='includes/logica/logica.php';
         div.appendChild(formulario).append(nome,email,senha,endereco,telefone,crmv,inicioExp, fimExp,submit);

@@ -12,7 +12,9 @@
         if(isset($_POST['crmv'])){
             /*Condição para quando for selecionado o botão veterinário*/            
             $crmv = $_POST['crmv'];
-            $array = array($nome, $email, $senhaEncriptada, $endereco, $telefone, $crmv);
+            $inicio = $_POST['inicio_expediente'];
+            $fim = $_POST['fim_expediente'];
+            $array = array($nome, $email, $senhaEncriptada, $endereco, $telefone, $crmv, $inicio, $fim);
         }
         else{
             /*Condição para quando for selecionado o botão dono pet */
@@ -149,6 +151,7 @@
         $inicio = $_POST['inicio'];
         $fim_expediente = $_POST['fim'];
         alterarExpediente($conexao,$email,$inicio,$fim_expediente);
+        header('location:../../home.php');
     }
 //funções do HISTÓRICO
 #INSERIR MEDICAMENTO NO HISTÓRICO 

@@ -10,8 +10,8 @@
     require "PHPMailer/src/SMTP.php";
 
     function inserirUsuario($conexao,$array){
-        if(count($array)==6){
-            $usuarios = $conexao->prepare("insert into usuario(nome, email, senha, endereco, telefone, crmv) values (?, ?, ?, ?, ?, ?)");
+        if(count($array)==8){
+            $usuarios = $conexao->prepare("insert into usuario(nome, email, senha, endereco, telefone, crmv, inicio_expediente, fim_expediente) values (?, ?, ?, ?, ?,?,?,?)");
             $query = $usuarios->execute($array);
         }
         else{
