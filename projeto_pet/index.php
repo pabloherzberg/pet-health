@@ -13,11 +13,11 @@
 <main>
     <section  class='texto'>
         <h2>Dono de Pet?</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam repudiandae illum dolore sint quod, incidunt soluta dolorem a, omnis officiis consequuntur possimus maiores rem! Dolor iure delectus aspernatur sapiente voluptatum?</p>
+        <p>Pet&Health permite que você cadastre e mantenha o histórico de saúde de todos os seus animais de estimação. Além disso, é possível consultar o contato e os horários de expediente de veterinários cadastrados. Ademais, a funcionalidade "Transferir Pet" permite que você doe um animal ou registre e compartilhe informações de histórico com outro usuário. </p>
     </section>
     <section class='texto'>
         <h2>Veterinário?</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nostrum quidem tempora dolore incidunt labore natus repellat soluta accusamus sequi, velit, ab laudantium. Similique expedita veritatis voluptas labore, esse sunt.</p>
+        <p>Pet&Health permite que você compartilhe o seu contato, assim como os seus horários de expediente. Ademais, você pode buscar um animal de estimação e obter o seu histórico a partir do email do dono e, assim, inserir informações pertinentes à consulta realizada. Também, o registro de animais de estimação bem como as demais funcionalidades do sistema estão disponíveis para usuários veterinários.</p>
     </section>
     <section id='principal'>
         <button onclick='logar()' id='logar'>Logar</button>
