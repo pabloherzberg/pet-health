@@ -132,7 +132,7 @@
         $raca=$_POST['raca'];
         $array = array($nomePet, $nasc,$raca,$codPet);
        $pet = atualizarPet($conexao, $array);
-        header('location: ../../addPet.php');
+        header('location: ../../listarPets.php');
     }
 #INSERIR MEDICAMENTO
     if(isset($_POST['cadastrarMedicamento'])){
