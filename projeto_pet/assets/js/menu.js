@@ -39,3 +39,19 @@ function donoMenu(){
     list[2].style.display='none';
     list[4].style.display='none';
 }
+function alterarMenu(){
+    const lista = document.querySelector('#listaMenu');
+    const li = document.createElement('li');
+    const li2 = document.createElement('li');
+    const button1 = document.createElement('button');
+    const button2 = document.createElement('button');
+    button1.id = 'botaoHist';
+    button1.setAttribute("onclick","criarFormHist();");
+    button1.innerText = 'Adicionar Medicamento';
+    button2.id = 'botaoTrans';
+    button2.setAttribute("onclick","criarFormTrans();");
+    button2.innerText = 'Transferir Pet';
+    lista.prepend(li,li2);
+    li.append(button1);
+    li2.append(button2);
+}
