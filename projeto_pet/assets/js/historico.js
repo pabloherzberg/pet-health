@@ -1,31 +1,16 @@
 
 function criarFormHist(){
-    
-    const div = document.getElementById('formulario');
-    const botao = document.getElementById('botaoHist');
-    const form = document.createElement('FORM');
+    const form = document.getElementById('registrarHistorico');
     const nomeMedicamento = document.createElement('INPUT');
-    const pessoa = document.createElement('INPUT');
-    const pet = document.createElement('INPUT');
     const data = document.createElement('INPUT');
     const hora = document.createElement('INPUT');
     const observacao = document.createElement('TEXTAREA');
     const submit = document.createElement('INPUT');
-
-    form.action="includes/logica/logica.php";
-    form.method="post";
+    const buttons = document.querySelectorAll('button');
 
     nomeMedicamento.type='text';
     nomeMedicamento.placeholder='nome do medicamento';
     nomeMedicamento.name='nome';
-    
-    pessoa.type='hidden';
-    pessoa.name='flag_veterinario';
-    pessoa.value = tipo;
-    
-    pet.type='hidden';
-    pet.name='cod_pet';
-    pet.value= codPet;
     
     data.type='date';
     data.name='dt_historico';
@@ -42,28 +27,36 @@ function criarFormHist(){
     submit.name='inserirHistorico';
     submit.value='Enviar';
   
-    div.appendChild(form).append(nomeMedicamento,pessoa,pet, data,hora,observacao,submit);
-    botao.className='hide';
-  
+    buttons[0].parentNode.removeChild(buttons[0]);
+    buttons[1].parentNode.removeChild(buttons[1]);
+    form.append(nomeMedicamento,data,hora,observacao,submit);
   }
 
   function criarFormTrans(){
-    const div = document.getElementById('formTransferencia');
-    const botao = document.getElementById('botaoTrans');
-    const form = document.createElement('FORM');
-    const pet = document.createElement('INPUT');
+    const form = document.getElementById('transferirPet');
     const inicioCuidados = document.createElement('INPUT');
     const fimCuidados = document.createElement('INPUT');
     const emailReceptor = document.createElement('INPUT');
     const tipoDoacao = document.createElement('select');
     const submit = document.createElement('INPUT');
+    const buttons = document.querySelectorAll('button');
 
-    form.action="includes/logica/logica.php";
-    form.method="post";
+    buttons[0].parentNode.removeChild(buttons[0]);
+    buttons[1].parentNode.removeChild(buttons[1]);
 
     tipoDoacao.name = 'tipoDoacao';
     tipoDoacao.options[0] = new Option('Permanente', 'P');
     tipoDoacao.options[1] = new Option('Temporária', 'T');
+    tipoDoacao.onchange = event => {
+      if(event.target.value == 'P'){
+        form.append(emailReceptor, inicioCuidados, submit);
+        form.removeChild(fimCuidados);
+      }
+      else{
+        form.append(emailReceptor, inicioCuidados, fimCuidados, submit);
+      }
+    }
+    form.append(tipoDoacao);
 
     emailReceptor.type = 'text';
     emailReceptor.name = 'email_receptor';
@@ -74,16 +67,10 @@ function criarFormHist(){
     
     fimCuidados.type='date';
     fimCuidados.name='data_devolucao';
-    
-    pet.type='hidden';
-    pet.name='cod_pet';
-    pet.value= codPet;
 
     submit.type='submit';
     submit.name='transferirHistorico';
     submit.value='Transferir';
-  
-    div.appendChild(form).append(emailReceptor,pet,tipoDoacao,inicioCuidados, fimCuidados,submit);
-    botao.className='hide';
 
-  }
+
+}

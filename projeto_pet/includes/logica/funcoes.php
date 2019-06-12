@@ -218,11 +218,10 @@
     }
 
    // ------ FUNÇÕES PARA MEDICAMENTOS e HISTORICOS ------
-    function inserirHistorico($conexao,$dataHist,$observacoes, $pessoa, $codPet, $hora, $nomeMedicamento ){
-        $array = array($dataHist, $observacoes,$pessoa,$codPet,$hora);
+    function inserirHistorico($conexao,$dataHist,$observacoes, $flag, $codPet, $hora, $nomeMedicamento ){
+        $array = array($dataHist, $observacoes,$flag,$codPet,$hora);
         $historico = $conexao->prepare("insert into historico (dt_historico, observacoes,flag_veterinario,cod_pet,hora) values (?,?,?,?,?)");
         $query = $historico->execute($array);        
-        
         // pegar o cod do historico recém criado
        $horaHist = $hora;
         $codigo = buscarCodHist($conexao, $horaHist);
