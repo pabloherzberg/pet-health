@@ -160,11 +160,17 @@
         $nomeMedicamento = $_POST['nome'];
         $dataHist=$_POST['dt_historico'];
         $hora=$_POST['hora'];
-        $flag_vet = $_POST['flag_veterinario'];
         $observacoes = $_POST['observacoes'];
         session_start();
         $email = $_SESSION['email'];
-        inserirHistorico($conexao,$dataHist,$observacoes, $flagVet, $codPet, $hora, $nomeMedicamento );
+        $crmv = $_SESSION['crmv'];
+        if(isset($crmv)){
+            $flagVet = 1;
+        }
+        else{
+            $flagVet = 0;
+        }
+        inserirHistorico($conexao,$dataHist,$observacoes, $flagVet, $codPet, $hora, $nomeMedicamento);
         header('location:../../home.php');
     }
 
