@@ -1,3 +1,7 @@
+main section{
+    display: flexbox;
+    flex-direction: column;
+}
 main section #idPet{
     display: flexbox;
     flex-direction: column;
@@ -6,4 +10,17 @@ main section #idPet{
 }
 main section #idPet p{
     text-align: center;
+}
+main section button{
+    margin-left: 50%;
+    transform: translate(-50%);
+    width: 85%;
+    background-color: transparent;
+    margin-top:1vh;
+}
+main{
+    height:70%;
+}
+footer{
+    min-height: 10%;
 }

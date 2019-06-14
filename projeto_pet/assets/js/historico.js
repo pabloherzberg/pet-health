@@ -32,7 +32,7 @@ function criarFormHist(){
     form.append(nomeMedicamento,data,hora,observacao,submit);
   }
 
-  function criarFormTrans(){
+function criarFormTrans(){
     const form = document.getElementById('transferirPet');
     const inicioCuidados = document.createElement('INPUT');
     const fimCuidados = document.createElement('INPUT');

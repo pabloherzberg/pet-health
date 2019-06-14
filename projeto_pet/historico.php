@@ -10,6 +10,24 @@
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/historico.css">
     <script src="assets/js/historico.js"></script>
+    <script>
+        window.onload = ()=>{
+            const lista = document.querySelector('#listaMenu');
+            const li = document.createElement('li');
+            const li2 = document.createElement('li');
+            const button1 = document.createElement('button');
+            const button2 = document.createElement('button');
+            button1.id = 'botaoHist';
+            button1.setAttribute("onclick","criarFormHist();");
+            button1.innerText = 'Adicionar Medicamento';
+            button2.id = 'botaoTrans';
+            button2.setAttribute("onclick","criarFormTrans();");
+            button2.innerText = 'Transferir Pet';
+            lista.prepend(li,li2);
+            li.append(button1);
+            li2.append(button2);
+        }
+    </script>
     <title>Histórico</title>
 </head>
 <body>
@@ -50,11 +68,9 @@
                     <?php endforeach; ?>
                     </table>
                 </div>
-                <button id='botaoHist' class="btn cadastro" onclick='criarFormHist()'>Adicionar Medicamento</button>
                 <form id='registrarHistorico' action="includes/logica/logica.php" method="post">
                     <input type="hidden" name="cod_pet" value='<?php echo $codPet ?>'>
                 </form> 
-                <button id='botaoTrans' class="btn cadastro" onclick='criarFormTrans()'>Transferir Pet</button>
                 <form id='transferirPet' action="includes/logica/logica.php" method="post">
                     <input type="hidden" name="cod_pet" value="<?php echo $codPet ?>">
                 </form>
