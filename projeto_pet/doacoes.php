@@ -27,7 +27,7 @@
                     <p>Email do cuidador: <?php echo $pet['email_receptor']; ?></p>
                     <p>Telefone do cuidador: <?php echo $telefone[0]; ?></p>
                     <p>Início dos cuidados: <?php echo $pet['data_doacao']; ?></p>
-                    <p>Data final dos cuidados: <?php echo $pet['data_devolucao']; ?></p>
+                    <p>Previsão para o final dos cuidados: <?php echo $pet['data_devolucao']; ?></p>
                     <form action="historico.php" method="post">
                         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
                         <input type="submit" class="btn cadastro" name="verHistorico" value="Visualizar histórico"/>
@@ -35,7 +35,7 @@
                     
                     <form action="includes/logica/logica.php" method="post">
                         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
-                        <input type="submit" class="btn cadastro" name="removerPetDoacao" value="Remover Doação"/>
+                        <input type="submit" class="btn cadastro" name="removerPetDoacao" value="Remover Cuidador"/>
                     </form>
                 </section>
             <?php

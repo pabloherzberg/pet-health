@@ -145,7 +145,7 @@
     }
 // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){    
-        $dados_pets = $conexao->prepare("SELECT * FROM pet WHERE email_dono = '$email'");      
+        $dados_pets = $conexao->prepare("SELECT cod_pet, nome_pet, to_char(dt_nascimento,'dd-mm-yyyy') dt_nascimento ,email_dono, raca FROM pet WHERE email_dono = '$email'");      
         $dados_pets->execute();
         $query = $dados_pets->fetchAll();
         return $query;
@@ -268,6 +268,8 @@
         return $histRecente;
     }
 
+//FUNÇÕES DE TRANSFERÊNCIA DE PET
+
     function transferirPet($conexao, $emailReceptor, $codPet, $dataDoacao,$dataDevolucao, $tipoDoacao, $emailDono){
         $verificaEmail = $conexao->prepare("select email from usuario where email = '$emailReceptor'");
         if($verificaEmail->execute() === true){
@@ -297,7 +299,8 @@
     }
 
     function listarPetsDoados($conexao, $email){
-        $dados_pets = $conexao->prepare("SELECT * FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_dono = '$email' and tipo_doacao = 'T'");      
+        $dados_pets = $conexao->prepare("SELECT pet.cod_pet, pet.nome_pet, doacao.email_receptor, to_char(doacao.data_doacao, 'dd-mm-yyyy') data_doacao, 
+        to_char(doacao.data_devolucao, 'dd-mm-yyyy') data_devolucao FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_dono = '$email' and tipo_doacao = 'T'");      
         $dados_pets->execute();
         $query = $dados_pets->fetchAll();
         
@@ -305,7 +308,8 @@
     }
 
     function listarPetsRecebidos($conexao, $email_receptor){
-        $dados_pets = $conexao->prepare("SELECT * FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_receptor= '$email_receptor' and tipo_doacao = 'T'");      
+        $dados_pets = $conexao->prepare("SELECT pet.cod_pet, pet.nome_pet, doacao.email_dono, to_char(doacao.data_doacao, 'dd-mm-yyyy') data_doacao, 
+        to_char(doacao.data_devolucao, 'dd-mm-yyyy') data_devolucao FROM pet join doacao on(pet.cod_pet=doacao.cod_pet) where doacao.email_receptor= '$email_receptor' and tipo_doacao = 'T'");      
         $dados_pets->execute();
         $query = $dados_pets->fetchAll();
         
@@ -318,5 +322,12 @@
         $query = $vets->fetchAll();
         
         return $query;
+    }
+
+    function removerPetDoacao($conexao, $codPet){
+        $doacao = $conexao->prepare("delete from doacao where cod_pet = '$codPet' and tipo_doacao = 'T'");
+        $doacao->execute();
+
+        return $doacao;
     }
 ?>
