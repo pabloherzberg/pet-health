@@ -75,7 +75,6 @@ input[type = submit]{
 /*fim resets*/
 body{
     background-color: var(--background);
-    background-image: url(/pet-health/projeto_pet/assets/img/patinhas.png);
     background-position: 0% 0%;
     background-size: 100%;
     height: 95vh;
@@ -130,7 +129,7 @@ main section button{
     background-color: var(--principal);
     border: none;
     height: 8vh;
-    width: 30vw;
+    width: 80%;
     border-radius: 4px;
     font-size: var(--fonte-tamanho);
 }
@@ -147,6 +146,8 @@ main form input{
     width: 90vw;
     height: 2rem;
     margin-bottom: 2.1vh;
+    margin-left: 50%;
+    transform: translateX(-50%);
     font-size: var(--fonte-tamanho);
 }
 main form input::placeholder{
@@ -158,7 +159,9 @@ main form input[type='submit']{
     background-color: var(--principal);
     border: none;
     height: 8vh;
-    width: 30vw;
+    width: 80%;
+    margin-left: 50%;
+    transform: translate(-50%);
     border-radius: 4px;
     font-size: 1.2em;
     text-decoration: none;

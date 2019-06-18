@@ -1,4 +1,5 @@
 <footer id='footer'>
+        <div id='catEye'></div>
         <nav id='menu'>
                 <ul id='listaMenu'>
                         <li><a href="addPet.php"><img src="" alt=""><span>Adicionar Pet</span></a></li>

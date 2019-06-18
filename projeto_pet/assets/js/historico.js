@@ -40,9 +40,11 @@ function criarFormTrans(){
     const tipoDoacao = document.createElement('select');
     const submit = document.createElement('INPUT');
     const buttons = document.querySelectorAll('button');
+    const idPet = document.getElementById('idPet');
+    const tabela = document.getElementById('tabela');
 
-    buttons[0].parentNode.removeChild(buttons[0]);
-    buttons[1].parentNode.removeChild(buttons[1]);
+    idPet.parentNode.removeChild(idPet);
+    tabela.parentNode.removeChild(tabela);
 
     tipoDoacao.name = 'tipoDoacao';
     tipoDoacao.options[0] = new Option('Permanente', 'P');

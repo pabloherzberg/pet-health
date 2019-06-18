@@ -11,6 +11,9 @@ main section #idPet{
 main section #idPet p{
     text-align: center;
 }
+main #transferirPet{
+    margin-top: 5vh;
+}
 main section button{
     margin-left: 50%;
     transform: translate(-50%);
@@ -18,8 +21,12 @@ main section button{
     background-color: transparent;
     margin-top:1vh;
 }
-main{
-    height:70%;
+select{
+    margin-left: 50%;
+    width: 80%;
+    height: 8vh;
+    transform: translateX(-50%);
+    border-radius: 10px;
 }
 footer{
     min-height: 10%;
