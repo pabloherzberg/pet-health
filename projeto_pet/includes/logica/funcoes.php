@@ -145,13 +145,13 @@
     }
 // ------ FUNÇÕES PARA PETS --------
     function listarPets($conexao, $email){    
-        $dados_pets = $conexao->prepare("SELECT cod_pet, nome_pet, to_char(dt_nascimento,'dd-mm-yyyy') dt_nascimento ,email_dono, raca FROM pet WHERE email_dono = '$email'");      
+        $dados_pets = $conexao->prepare("SELECT cod_pet, nome_pet, to_char(dt_nascimento,'dd-mm-yyyy') dt_nascimento ,email_dono, raca , foto FROM pet WHERE email_dono = '$email'");      
         $dados_pets->execute();
         $query = $dados_pets->fetchAll();
         return $query;
     }
     function inserirPet($conexao, $array){
-        $pet = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, raca, email_dono) values (?,?,?,?)");
+        $pet = $conexao->prepare("insert into pet (nome_pet, dt_nascimento, raca, email_dono, foto) values (?,?,?,?,?)");
         $query = $pet->execute($array);
         return $query;
     }
@@ -163,7 +163,7 @@
     }
 
     function atualizarPet($conexao, $array){
-        $usuarios = $conexao->prepare("update pet set nome_pet = ?, dt_nascimento = ?, raca = ? where cod_pet = ?");
+        $usuarios = $conexao->prepare("update pet set nome_pet = ?, dt_nascimento = ?, raca = ?, foto = ? where cod_pet = ?");
         $query = $usuarios->execute($array);
         return $query;
     }
