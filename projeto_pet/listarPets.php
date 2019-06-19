@@ -23,11 +23,13 @@
             $idade = idadePet($dt_nasc);
             ?>
                 <section>
-                    <h2>Nome: <?php echo $pet['nome_pet']; ?></h2>
-                    <p><?php echo $idade; ?> anos</p>
+                    <div id='nomeFotoPet'>
+                        <span><?php echo $pet['nome_pet']; ?></span>
+                        <img src="assets/img/<?= $pet['foto']?>" width="80px" height="120px">
+                    </div>
+                    <p><?php echo $idade;?> anos</p>
                     <p>Nascimento: <?php echo $pet['dt_nascimento']; ?></p>
                     <p>Raça: <?php echo $pet['raca']; ?></p>
-                    <p><img src="assets/img/<?= $pet['foto']?>" width="80px" height="120px"></p>
                     <form action="historico.php" method="post">
                         <input type="hidden" name="cod_pet" value="<?=$pet['cod_pet']?>" />
                         <input type="submit" class="btn cadastro" name="verHistorico" value="Visualizar histórico"/>

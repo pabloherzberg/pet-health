@@ -13,7 +13,20 @@ main section{
     min-width: 90vw;
     margin-left: 5vw;
 }
-main section h2{
+main #nomeFotoPet{
+    width: 100%;
+    max-height: 25%
+}
+#nomeFotoPet img{
+    height: 12vh;
+    width: 12vh;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 50%;
+}
+
+main section span{
+    display: inline-block;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--logo);
     text-align: center;
@@ -29,10 +42,11 @@ main section input[type = submit]{
     width: 80%;
     background-color: var(--input);
     border-radius: 10px;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: .5vh;
+    margin-bottom: .5vh;
     margin-left: 50%;
     transform: translateX(-50%);
+    height: 7vh;
 }
 #footer{
     background-image: url(/pet-health/projeto_pet/assets/img/listarPets.png);
