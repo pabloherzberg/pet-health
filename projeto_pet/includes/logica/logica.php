@@ -112,11 +112,27 @@
         $nomePet = $_POST['nome'];
         $dt_nascimento = $_POST['dt_nascimento'];
         $raca=$_POST['raca'];
+        $foto = $_FILES['foto']['name']; 
+        $arquivo_temporario=$_FILES['foto']['tmp_name'];
         session_start();
         $email = $_SESSION['email'];
-        $array = array($nomePet, $dt_nascimento,$raca, $email);
-        inserirPet($conexao, $array);
-        header('location:../../home.php');
+        // echo($arquivo_temporario);
+        // die;
+        if (!empty($foto)) {
+            if (move_uploaded_file($arquivo_temporario, "../../assets/img/$foto")) {
+            echo " Upload do arquivo: ". $foto."concluído com sucesso";
+            }
+            else {
+            die( "Falha no envio do arquivo");
+            }
+           }
+           else{
+           die("Selecione o arquivo a ser enviado");
+            }
+            $array = array($nomePet, $dt_nascimento,$raca, $email, $foto);
+            inserirPet($conexao, $array);
+            header('location:../../home.php');
+    
     }
 
 #REMOVER PET
@@ -132,7 +148,21 @@
         $nomePet = $_POST['nome_pet'];
         $nasc = $_POST['dt_nascimento'];
         $raca=$_POST['raca'];
-        $array = array($nomePet, $nasc,$raca,$codPet);
+        $foto = $_FILES['foto']['name']; 
+        $arquivo_temporario=$_FILES['foto']['tmp_name'];
+
+        if (!empty($foto)) {
+            if (move_uploaded_file($arquivo_temporario, "../../assets/img/$foto")) {
+            echo " Upload do arquivo: ". $foto."concluído com sucesso";
+            }
+            else {
+            die( "Falha no envio do arquivo");
+            }
+           }
+           else{
+           die("Selecione o arquivo a ser enviado");
+            }
+       $array = array($nomePet, $nasc,$raca, $foto, $codPet);
        $pet = atualizarPet($conexao, $array);
         header('location: ../../listarPets.php');
     }
