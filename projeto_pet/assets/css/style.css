@@ -116,7 +116,7 @@ main{
     display: flex;
     flex-direction: row;
     clear: both;
-    height: 50%;
+    height: 70%;
     overflow-x: scroll;
     overflow-y: scroll;
 
@@ -170,9 +170,8 @@ main form input[type='submit']{
 }
 footer{
     position: static;
-    min-height: 30%;
+    bottom: 0px;
     display: flex;
-    align-items: flex-end;
 }
 nav{
     width: 100vw;

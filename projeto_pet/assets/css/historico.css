@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+/*cores*/
+:root{
+    --preto: #292929;
+    --fonte-tamanho: 1rem;
+}
 main section{
     display: flexbox;
     flex-direction: column;
@@ -20,6 +26,19 @@ main section button{
     width: 85%;
     background-color: transparent;
     margin-top:1vh;
+}
+#tabela{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--preto);
+    font-size: var(--fonte-tamanho);
+    text-align: center;
+    line-height: calc(var(--fonte-tamanho)*2);
+    background-color: rgba(255,255,255,0.5);
+}
+#tabela th{
+    padding-left: .5rem;
+    font-size: .9rem;
+    text-align: center;
 }
 select{
     margin-left: 50%;
