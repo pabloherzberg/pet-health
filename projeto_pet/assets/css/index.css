@@ -34,8 +34,9 @@ main section p{
     background-color: var(--principal);
     background-image: url(/pet-health/projeto_pet/assets/img/index.png);
     background-size: 250%;
-    background-position: 67% 51%;
+    background-position: 67% 59%;
     background-repeat: no-repeat;
+    height: 30vh;
 }
 #formulario{
     width: 100vw;
@@ -46,7 +47,7 @@ main section p{
     height: 2vh;
     width: 3vh;
     border-radius: 50%;
-    margin-bottom: 21.5vh;
+    margin-top: 1.5vh;
     margin-left: 31vw;
     background-color: #292929;
     animation: pisca 3s infinite;
